@@ -5,6 +5,8 @@ import {
   UserOutlined,
   UserAddOutlined,
   LogoutOutlined,
+  ShoppingCartOutlined,
+  
 } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
@@ -37,11 +39,18 @@ const Header = () => {
               >
                 <Link to="/logout">Logout</Link>
               </Menu.Item>
+              <Menu.Item
+                key="car"
+                icon={<ShoppingCartOutlined />}
+                onClick={onLogout}
+              >
+                {/* <Link to="/logout">Logout</Link> */}
+              </Menu.Item>
             </>
           ) : (
             <Menu.Item key="login" icon={<UserAddOutlined />}>
               <Link to="/login">Login</Link>
-            </Menu.Item>
+            </Menu.Item>            
           )}
         </Menu>
       </div>
@@ -67,3 +76,6 @@ const Header = () => {
 };
 
 export default Header;
+
+
+
