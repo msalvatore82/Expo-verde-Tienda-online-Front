@@ -1,23 +1,26 @@
-import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./components/Login/Login.jsx";
-import { UserProvider } from "./context/UserContext/UserState";
-import { Header } from "antd/es/layout/layout";
+import "./App.css";
 import Home from "./components/Home/Home";
+import Login from "./components/Login/Login";
+import Profile from "./components/Profile/Profile";
+import Header from "./components/Headers/Header";
+import { UserProvider } from "./context/UserContext/UserState";
+
 
 function App() {
   return (
     <div className="App">
-      <UserProvider>
-        
-        <BrowserRouter>
-        <Header />
+      <BrowserRouter>
+        <UserProvider>
+          <Header />
           <Routes>
-            <Route path="=/home" element={<Home/> }/>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
+            
           </Routes>
-        </BrowserRouter>
-      </UserProvider>
+        </UserProvider>
+      </BrowserRouter>
     </div>
   );
 }

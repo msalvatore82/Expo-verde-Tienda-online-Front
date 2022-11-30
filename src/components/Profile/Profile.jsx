@@ -9,15 +9,11 @@ const Profile = () => {
     getUserInfo();
   }, []);
 
-//   if(!user){
-//     return  
-//   }
 
   return (
     <div>
       <h1>Profile</h1>
-      {!user ? <Spin size="large" />: <p> {user.name}</p>}
-      {/* <p> {user.name}</p> */}
+      {!user ? <Spin size="large" />: <p><span> {user.name} </span><span>{user.surname},</span> <span> {user.email}</span></p>}
     </div>
   );
 };
