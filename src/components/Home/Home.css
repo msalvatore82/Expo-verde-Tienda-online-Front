@@ -1,0 +1,11 @@
+.imagen{
+    background-size: cover;
+    background-image: url(../../assets//img/banner-navidad.jpg);
+    height: 70vh;
+    margin-top: 0px;
+}
+
+.bienvenidos{
+    margin: 0;
+    padding: 35px;
+}
