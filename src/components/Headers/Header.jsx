@@ -5,17 +5,20 @@ import {
   UserOutlined,
   UserAddOutlined,
   LogoutOutlined,
+  ShopOutlined,
   ShoppingCartOutlined,
-  SearchOutlined,
+  SearchOutlined
 } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 import { UserContext } from "../../context/UserContext/UserState";
-import { Button, Tooltip } from 'antd';
-// import { Green } from '@ant-design/colors';
+import {Badge, Button } from "antd";
+import { ProductsContext } from "../../context/ProductContext/ProductState";
+
 
 const Header = () => {
   const { token, logout } = useContext(UserContext);
+  const { cart } = useContext(ProductsContext);
   const navigate = useNavigate();
   const onLogout = () => {
     logout();
@@ -23,7 +26,7 @@ const Header = () => {
   };
   return (
     <>
-      <div classNameName="nav-superior">
+      <div className="nav-superior">
         <Menu mode="horizontal" defaultSelectedKeys={["home"]} style={{
               backgroundColor: "#293B31",
               color: "white",
@@ -31,6 +34,9 @@ const Header = () => {
           <Menu.Item key="home" icon={<HomeOutlined />}>
             <Link to="/">Home</Link>
           </Menu.Item>
+          <Menu.Item key="products" icon={<ShopOutlined />}>
+        <Link to="/products">Products</Link>
+      </Menu.Item>
           {token ? (
             <>
               <Menu.Item key="profile" icon={<UserOutlined />}>
@@ -43,14 +49,7 @@ const Header = () => {
               >
                 <Link to="/logout">Logout</Link>
               </Menu.Item>
-              <Menu.Item
-                className="icon-car"
-                key="car"
-                icon={<ShoppingCartOutlined />}
-                onClick={onLogout}
-              >
-                {/* <Link to="/logout">Logout</Link> */}
-              </Menu.Item>
+              
             </>
           ) : (
             <Menu.Item key="login" icon={<UserAddOutlined />}>
@@ -77,6 +76,14 @@ const Header = () => {
               Search
             </Button>
           </Menu.Item>
+          <Menu.Item key="cart" icon={<ShoppingCartOutlined />}>
+        <Link to="/cart">
+          {" "}
+          <Badge count={cart.length} size="small">
+            Cart
+          </Badge>
+        </Link>
+      </Menu.Item>
         </Menu>
       </div>
     </>

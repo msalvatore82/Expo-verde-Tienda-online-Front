@@ -16,7 +16,7 @@ const Login = () => {
       if (foundToken) {
       navigate("/profile")
     }
-}, [login, navigate])
+}, [login])
   return (
     <div className="container">
       <h1>Login</h1>
