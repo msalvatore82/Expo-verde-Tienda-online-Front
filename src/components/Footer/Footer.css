@@ -1,0 +1,8 @@
+footer{
+    background: no-repeat center/100% url("../../assets/img/footer.png");
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    
+}

@@ -5,11 +5,11 @@ import Login from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
 import Header from "./components/Headers/Header";
 import { UserProvider } from "./context/UserContext/UserState";
-
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App imagen">
       <BrowserRouter>
         <UserProvider>
           <Header />
@@ -17,8 +17,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile" element={<Profile />} />
-            
           </Routes>
+          <Footer />
         </UserProvider>
       </BrowserRouter>
     </div>
