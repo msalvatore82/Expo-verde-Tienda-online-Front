@@ -1,49 +1,123 @@
 import React from "react";
-import "./Footer.css";
-
-function Footer() {
+import Sociallink from "./Sociallink/Sociallink";
+import {
+  faFacebook,
+  faInstagram,
+  faTwitter,
+  faPinterest,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
+export default function Footer() {
+  const year = new Date().getFullYear();
   return (
-    <div className="main-footer">
-      <div className="container">
-        <div className="row">
-          {/* Column1 */}
-          <div className="col">
-            <h4>THICC MEMES INC</h4>
-            <h1 className="list-unstyled">
-              <li>342-420-6969</li>
-              <li>Moscow, Russia</li>
-              <li>123 Streeet South North</li>
-            </h1>
+    <>
+      <footer className="footer_area clearfix" id="not-invert">
+        <div className="container">
+          <div className="row">
+            <div className="col-12 col-md-6">
+              <div className="single_widget_area d-flex mb-30">
+                <div className="footer-logo mr-50">
+                  <Link to="/main">Komorebi</Link>
+                </div>
+
+                <div className="footer_menu">
+                  <ul>
+                    <li>
+                      <Link to="/products">Tienda</Link>
+                    </li>
+                    <li>
+                      <Link to="/contact">Contacto</Link>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-12 col-md-6">
+              <div className="single_widget_area mb-30">
+                <ul className="footer_widget_menu">
+                  <li>
+                    <Link to="#">Estado del pedido</Link>
+                  </li>
+                  <li>
+                    <Link to="#">Opciones de pago</Link>
+                  </li>
+                  <li>
+                    <Link to="#">Envio</Link>
+                  </li>
+                  <li>
+                    <Link to="#">Guias</Link>
+                  </li>
+                  <li>
+                    <Link to="#">Privacidad</Link>
+                  </li>
+                  <li>
+                    <Link to="#">Terminos de uso</Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          {/* Column2 */}
-          <div className="col">
-            <h4>Stuff</h4>
-            <ui className="list-unstyled">
-              <li>DANK MEMES</li>
-              <li>OTHER STUFF</li>
-              <li>GUD STUFF</li>
-            </ui>
+
+          <div className="row align-items-end">
+            <div className="col-12 col-md-6">
+              <div className="single_widget_area">
+                <div className="footer_heading mb-30">
+                  <h6>Subscribete</h6>
+                </div>
+                <div className="subscribtion_form">
+                  <form>
+                    <input
+                      type="email"
+                      name="mail"
+                      className="mail"
+                      placeholder="  Your email here"
+                    />
+                    <button type="button" className="submit">
+                      <i
+                        className="fa fa-long-arrow-right"
+                        aria-hidden="true"
+                      ></i>
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            <div className="col-12 col-md-6">
+              <div className="single_widget_area">
+                <div className="footer_social_area">
+                  <Sociallink href="#" title="Facebook" icon={faFacebook}/>
+                  <Sociallink href="https://instagram.com/yol_rnd" title="Instagram" icon={faInstagram}/>
+                  <Sociallink href="#" title="Twitter" icon={faTwitter}/>
+                  <Sociallink href="#" title="Pinterest" icon={faPinterest}/>
+                  <Sociallink href="#" title="YouTube" icon={faYoutube}/>
+                </div>
+              </div>
+            </div>
           </div>
-          {/* Column3 */}
-          <div className="col">
-            <h4>WELL ANOTHER COLUMN</h4>
-            <ui className="list-unstyled">
-              <li>DANK MEMES</li>
-              <li>OTHER STUFF</li>
-              <li>GUD STUFF</li>
-            </ui>
+
+          <div className="row mtc-5">
+            <div className="col-md-12 text-center">
+              <p>
+                Copyright &copy; {year} All rights reserved | 
+                by Matias & Diego
+                <Link
+                  to="https://github.com/Dubesor22/ecommerce-react-node"
+                  target="_blank"
+                >
+                  
+                </Link>
+                , distributed by{" "}
+                <Link to="#" target="_blank">
+                  Expo Verde
+                </Link>
+              </p>
+            </div>
           </div>
         </div>
-        <hr />
-        <div className="row">
-          <p className="col-sm">
-            &copy;{new Date().getFullYear()} THICC MEMES | All rights reserved |
-            Terms Of Service | Privacy
-          </p>
-        </div>
-      </div>
-    </div>
+      </footer>
+    </>
   );
 }
-
-export default Footer;
