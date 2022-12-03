@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
-import { Button, Spin, Badge } from "antd";
+import { Button, Spin, Badge, Card } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 
 import "./Profile.css";
@@ -34,18 +34,17 @@ const Profile = () => {
             <p>
               User interface designer and <br /> front-end developer
             </p>
-            {user.Orders.map((order) =>
-              console.log(order.Products.map((product) => product.name))
-            )}
+            <div></div>
+
             <div class="buttons">
               <Button
+                // onClick={createNewResgister}
                 style={{
                   margin: "10px",
                   border: "1px solid black",
                 }}
               >
-                <Badge count={user.Orders.length} size="small"
-                ></Badge>
+                <Badge count={user.Orders.length} size="x-small"></Badge>
                 Mis Pedidos <ShoppingCartOutlined />
               </Button>
               {/* <Button onClick={() => }>
@@ -53,6 +52,20 @@ const Profile = () => {
               </Button> */}
             </div>
           </div>
+          <p>
+            <Card
+              title="{product.name}"
+              bordered={true}
+              style={{
+                width: 300,
+                border: "1px solid black",
+                textAlign: "center",
+                marginTop: 15,
+              }}
+            >
+              <p>"product.price" €</p>
+            </Card>
+          </p>
         </>
       )}
     </div>
@@ -60,3 +73,9 @@ const Profile = () => {
 };
 
 export default Profile;
+
+// {user.Orders.map((order) => (order.Products.map((product) =>  {
+//   return (
+//
+// )
+// }
