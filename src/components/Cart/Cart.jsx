@@ -1,19 +1,31 @@
 import React, { useContext, useEffect } from "react";
-import { Divider, Button, Card } from "antd";
+import { Divider, Button, Card,  notification} from "antd";
 import { ShoppingOutlined } from "@ant-design/icons";
 import { ProductsContext } from "../../context/ProductContext/ProductState";
 import { OrderContext } from "../../context/OrderContext/OrderState";
+import {  useNavigate } from "react-router-dom";
+
 
 const Cart = () => {
   const { cart, clearCart } = useContext(ProductsContext);
-  const { createOrder } = useContext(OrderContext);
+  const { createOrder, } = useContext(OrderContext);
+  const navigate = useNavigate()
   const createNewOrder = () => {
-    createOrder(cart);
-    clearCart();
+      createOrder(cart);
+      notification.success({
+        description:"success",
+        duration: 2
+      })
+      setTimeout(() => {
+         clearCart();
+        navigate("/")
+
+       }, 2000);
   };
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+
 
   return (
     <div
@@ -53,8 +65,11 @@ const Cart = () => {
         })}
       </div>
       <div>
-        <Button onClick={clearCart}>Clear Cart</Button>
-        <Button onClick={createNewOrder}>
+        <Button >Clear Cart</Button>
+        <Button onClick={() => {
+          createNewOrder();
+          // Acept();
+        }}> 
           Buy <ShoppingOutlined />
         </Button>
       </div>
@@ -63,3 +78,6 @@ const Cart = () => {
 };
 
 export default Cart;
+
+
+

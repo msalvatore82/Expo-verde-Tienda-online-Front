@@ -1,16 +1,17 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
 import { Button, Spin, Badge, Card } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-
+import { Collapse } from "antd";
 import "./Profile.css";
+const { Panel } = Collapse;
 
 const Profile = () => {
   const { user, getUserInfo } = useContext(UserContext);
-
+const [visible,setVisible]=useState(false)
   useEffect(() => {
     getUserInfo();
   }, []);
@@ -38,7 +39,7 @@ const Profile = () => {
 
             <div class="buttons">
               <Button
-                // onClick={createNewResgister}
+                onClick={()=>setVisible(true)}
                 style={{
                   margin: "10px",
                   border: "1px solid black",
@@ -52,20 +53,20 @@ const Profile = () => {
               </Button> */}
             </div>
           </div>
-          <p>
-            <Card
-              title="{product.name}"
-              bordered={true}
-              style={{
-                width: 300,
-                border: "1px solid black",
-                textAlign: "center",
-                marginTop: 15,
-              }}
-            >
-              <p>"product.price" €</p>
-            </Card>
-          </p>
+          {user.Orders.map((item) => {
+            return (
+              (visible ? 
+              <Collapse >
+                <Panel header={"Nº Pedido" + item.id} key="1">
+                  {item.Products.map((product) => (
+                    <p>{product.name}</p>
+                  ))}
+                </Panel>
+              </Collapse>
+              : null
+              )
+            );
+          })}
         </>
       )}
     </div>

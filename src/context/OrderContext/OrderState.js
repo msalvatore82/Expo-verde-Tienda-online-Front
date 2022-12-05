@@ -1,5 +1,6 @@
 import { createContext } from "react";
 import axios from "axios";
+import { Button, Result } from "antd";
 
 const initialState = {
     orders:[]
@@ -10,10 +11,12 @@ export const OrderContext = createContext(initialState);
 export const OrderProvider = ({ children }) => {
 
   const createOrder = async (order) => {
+    const productIds = order.map(item => item.id)
+
     const token = JSON.parse(localStorage.getItem("token"));
     const res = await axios.post(
       API_URL + "/orders/createOrder",
-      { ProductId: order },
+      { ProductId: productIds },
       {
         headers: {
           authorization: token,
@@ -22,11 +25,13 @@ export const OrderProvider = ({ children }) => {
     );
     return res;
   };
+  
 
   return (
     <OrderContext.Provider
       value={{
         createOrder,
+    
 
       }}
     >
