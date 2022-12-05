@@ -1,4 +1,4 @@
-import { createContext, useReducer  } from "react";
+import { createContext, useReducer } from "react";
 import UserReducer from "./UserReducer.js";
 import axios from "axios";
 
@@ -13,7 +13,7 @@ const API_URL = "http://localhost:8000";
 
 export const UserContext = createContext(initialState);
 export const UserProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(UserReducer, initialState);
+  const [state, dispatch] = useReducer(UserReducer, initialState);
   const login = async (user) => {
     const res = await axios.post(API_URL + "/users/login", user);
     dispatch({
@@ -40,6 +40,15 @@ export const UserProvider = ({ children }) => {
     });
     return res;
   };
+  const register = async (user) => {
+    const res = await axios.post(API_URL + "/users/createUser", user);
+    dispatch({
+      type: "ADD_USER",
+      payload: res.data,
+    });
+  };
+
+  
 
   const logout = async () => {
     const token = JSON.parse(localStorage.getItem("token"));
@@ -49,21 +58,21 @@ export const UserProvider = ({ children }) => {
       },
     });
     dispatch({
-        type:"LOGOUT"
-    })
-    if(res.data){
-        localStorage.removeItem("token")
-    }
-    
-  };
+      type: "LOGOUT",
+    });
+    if (res.data) {
+      localStorage.removeItem("token");
+    } 
+  }
   return (
     <UserContext.Provider
       value={{
         token: state.token,
-       user: state.user,
+        user: state.user,
         login,
         getUserInfo,
         logout,
+        register,
       }}
     >
       {children}

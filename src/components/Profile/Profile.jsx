@@ -66,9 +66,7 @@ const [visible,setVisible]=useState(false)
                     <span>
 
                     </span>
-        
-                   
-                    </>
+                  </>
                   ))}
                 </Panel>
               </Collapse>
@@ -83,14 +81,3 @@ const [visible,setVisible]=useState(false)
 };
 
 export default Profile;
-
-
-<span
-style={{
-  fontSize: 20,
-  fontWeight: 700,
-}}
->
-€{" "}
-
-</span>

@@ -88,12 +88,10 @@ const Cart = () => {
         })}
       </div>
       <div className="card-buttons">
-        <Button onClick={clearCart}>Clear Cart</Button>
-        <Button
-          onClick={() => {
-            createNewOrder();
-          }}
-        >
+        <Button type="primary" size="large" onClick={clearCart}>
+          Clear Cart
+        </Button>
+        <Button type="primary" size="large" onClick={createNewOrder}>
           Buy <ShoppingOutlined />
         </Button>
       </div>
