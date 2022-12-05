@@ -52,6 +52,13 @@ const Header = () => {
               >
                 <Link to="/logout">Logout</Link>
               </Menu.Item>
+              {/* <Menu.Item
+                key="Registration"
+                // icon={<LogoutOutlined />}
+                // onClick={onLogout}
+              >
+                <Link to="/Registration">Registration</Link>
+              </Menu.Item> */}
             </>
           ) : (
             <Menu.Item key="login" icon={<UserAddOutlined />}>

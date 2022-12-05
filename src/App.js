@@ -10,6 +10,7 @@ import { UserProvider } from "./context/UserContext/UserState";
 import { ProductsProvider } from "./context/ProductContext/ProductState";
 import { OrderProvider } from "./context/OrderContext/OrderState";
 import Cart from "./components/Cart/Cart";
+// import Registration from "./components/Registration/Registration";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/products" element={<Products />} />
                 <Route path="/cart" element={<Cart />} />
+                {/* <Route path="/Registration" element={<Registration />} /> */}
               </Routes>
               <Footer />
             </OrderProvider>

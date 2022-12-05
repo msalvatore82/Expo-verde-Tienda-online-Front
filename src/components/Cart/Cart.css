@@ -1,0 +1,14 @@
+
+
+.card-buttons{
+    display:flex;
+    justify-content: center;
+    gap:1rem;
+    margin-top: 0.5rem;
+}
+
+.box-total{
+    text-align: center;
+    margin: auto;
+    margin-top: 15px;
+    }
