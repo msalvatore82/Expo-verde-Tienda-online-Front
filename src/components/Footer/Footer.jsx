@@ -18,7 +18,7 @@ export default function Footer() {
             <div className="col-12 col-md-6">
               <div className="single_widget_area d-flex mb-30">
                 <div className="footer-logo mr-50">
-                  <Link to="/main">Komorebi</Link>
+                  <Link to="/main">Expo Verde</Link>
                 </div>
 
                 <div className="footer_menu">
@@ -89,7 +89,7 @@ export default function Footer() {
               <div className="single_widget_area">
                 <div className="footer_social_area">
                   <Sociallink href="#" title="Facebook" icon={faFacebook}/>
-                  <Sociallink href="https://instagram.com/yol_rnd" title="Instagram" icon={faInstagram}/>
+                  <Sociallink href="https://instagram.com" title="Instagram" icon={faInstagram}/>
                   <Sociallink href="#" title="Twitter" icon={faTwitter}/>
                   <Sociallink href="#" title="Pinterest" icon={faPinterest}/>
                   <Sociallink href="#" title="YouTube" icon={faYoutube}/>
@@ -104,7 +104,7 @@ export default function Footer() {
                 Copyright &copy; {year} All rights reserved | 
                 by Matias & Diego
                 <Link
-                  to="https://github.com/Dubesor22/ecommerce-react-node"
+                  to="https://github.com/msalvatore82/Expo-verde-Tienda-online-Front.git"
                   target="_blank"
                 >
                   

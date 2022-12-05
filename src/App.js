@@ -9,6 +9,7 @@ import Footer from "./components/Footer/Footer";
 import { UserProvider } from "./context/UserContext/UserState";
 import { ProductsProvider } from "./context/ProductContext/ProductState";
 import { OrderProvider } from "./context/OrderContext/OrderState";
+import 'bootswatch/dist/morph/bootstrap.min.css';
 import Cart from "./components/Cart/Cart";
 
 function App() {

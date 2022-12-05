@@ -1,0 +1,78 @@
+/* .imagen{
+    background-image: url(../../assets//img/banner-navidad.jpg);
+    margin-top: 0px;
+    size: 100%;
+}
+
+.bienvenidos{
+    margin: 0;
+    padding: 35px;
+} */
+
+.product-collection {
+    padding: 3.2rem 0;
+  }
+  .product-collection-wrapper {
+    padding: 3.2rem 0;
+  }
+  .product-col-left {
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)),
+      url('/assets/interior.jpg') center/cover no-repeat;
+  }
+  .product-col-r-top {
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)),
+      url('/assets/exterior.jpg') center/cover no-repeat;
+  }
+  .product-col-r-top2 {
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)),
+      url('/assets/accesorios.jpg') center/cover no-repeat;
+  }
+  .product-col-r-top3 {
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)),
+      url('/assets/tienda.jpg') center/cover no-repeat;
+  }
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 50vh;
+    padding: 2rem 1.5rem 3.2rem;
+    margin: 5px;
+  }
+  
+  .product-col-content {
+    text-align: center;
+    color: white;
+  }
+  .product-collection .text-light {
+    opacity: 1;
+    font-size: 0.8;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+  .btn-dark {
+    background: black;
+    color: white;
+    outline: 0;
+    border-radius: 25px;
+    padding: 0.7rem 1rem;
+    border: 0;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: all 0.6s ease;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  .btn-dark:hover {
+    background: var(--carribean-green);
+  }
+  
+  .sm-title-home {
+    color: #ffff;
+  }
+  
+  .md-title-home {
+    color: #ffff;
+    font-weight: bold;
+  }
+  
