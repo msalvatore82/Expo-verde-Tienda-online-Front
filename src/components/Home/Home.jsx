@@ -26,7 +26,7 @@ const Home = () => {
               </p>
               <Link to='/products'>
                 <button type='button' className='btn-dark'>
-                  Shop now
+                  Compra ahora
                 </button>
               </Link>
             </div>
@@ -43,7 +43,7 @@ const Home = () => {
                 </p>
                 <Link to='/products'>
                   <button type='button' className='btn-dark'>
-                    Shop now
+                    Compra ahora
                   </button>
                 </Link>
               </div>
@@ -57,7 +57,7 @@ const Home = () => {
                 </p>
                 <Link to='/products'>
                   <button type='button' className='btn-dark'>
-                    Shop now
+                    Compra ahora
                   </button>
                 </Link>
               </div>
@@ -65,13 +65,13 @@ const Home = () => {
             <div className='product-col-r-top3 flex'>
               <div className='product-col-content'>
                 <h2 className='sm-title sm-title-home'>Marca Expo Verde</h2>
-                <h2 className='md-title md-title-home'></h2>
+                <h2 className='md-title md-title-home'>Marca Expo Verde</h2>
                 <p className='text-light'>
                 La calidad y los ingredientes naturales son las dos características de los productos marca Expo Verde. Una gama diseñada y formulada para ofrecerte todo lo que necesitas para cuidar de tus plantas, tu jardín, tu huerto o tu mascota con nuestro sello de garantía. ¡Descubre todos los productos marca Expo Verde!
                 </p>
                 <Link to='/products'>
                   <button type='button' className='btn-dark'>
-                    Shop now
+                    Compra ahora
                   </button>
                 </Link>
               </div>
