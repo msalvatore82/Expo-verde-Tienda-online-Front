@@ -1,16 +1,17 @@
 /* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
-import { Button, Spin, Badge } from "antd";
+import { Button, Spin, Badge, Card } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-
+import { Collapse } from "antd";
 import "./Profile.css";
+const { Panel } = Collapse;
 
 const Profile = () => {
   const { user, getUserInfo } = useContext(UserContext);
-
+const [visible,setVisible]=useState(false)
   useEffect(() => {
     getUserInfo();
   }, []);
@@ -34,18 +35,17 @@ const Profile = () => {
             <p>
               User interface designer and <br /> front-end developer
             </p>
-            {user.Orders.map((order) =>
-              console.log(order.Products.map((product) => product.name))
-            )}
+            <div></div>
+
             <div class="buttons">
               <Button
+                onClick={()=>setVisible(true)}
                 style={{
                   margin: "10px",
                   border: "1px solid black",
                 }}
               >
-                <Badge count={user.Orders.length} size="small"
-                ></Badge>
+                <Badge count={user.Orders.length} size="x-small"></Badge>
                 Mis Pedidos <ShoppingCartOutlined />
               </Button>
               {/* <Button onClick={() => }>
@@ -53,6 +53,20 @@ const Profile = () => {
               </Button> */}
             </div>
           </div>
+          {user.Orders.map((item) => {
+            return (
+              (visible ? 
+              <Collapse >
+                <Panel header={"Nº Pedido" + item.id} key="1">
+                  {item.Products.map((product) => (
+                    <p>{product.name}</p>
+                  ))}
+                </Panel>
+              </Collapse>
+              : null
+              )
+            );
+          })}
         </>
       )}
     </div>
@@ -60,3 +74,9 @@ const Profile = () => {
 };
 
 export default Profile;
+
+// {user.Orders.map((order) => (order.Products.map((product) =>  {
+//   return (
+//
+// )
+// }

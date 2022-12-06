@@ -27,6 +27,7 @@ const Products = () => {
                 width: 300,
                 border: "1px solid black",
                 textAlign: "center",
+                
               }}
             >
                 <img src={product.image} alt="" style={{
