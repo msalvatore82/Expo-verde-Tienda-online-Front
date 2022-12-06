@@ -38,8 +38,8 @@ p {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	width: 350px;
-	max-width: 100%;
+	width: 30%;
+	
 	text-align: center;
 }
 

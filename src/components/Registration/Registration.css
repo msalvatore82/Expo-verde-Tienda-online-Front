@@ -38,12 +38,12 @@ p {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	width: 500px;
+	width: 80%;
 	max-width: 100%;
 	text-align: center;
     margin: auto;
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 /* 
 .card-container .pro {
