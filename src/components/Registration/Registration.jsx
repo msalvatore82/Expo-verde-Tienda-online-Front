@@ -1,12 +1,13 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useContext } from "react";
 import { Button, Form, Input, Radio } from "antd";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext/UserState";
-import { Link } from "react-router-dom";
+import GoogleLogin from "react-google-login";
+import "./Registration.css";
 
 const createUser = () => {
-  const { register } = useContext(UserContext);
+  const { register, message } = useContext(UserContext);
   const navigate = useNavigate();
   const onFinish = (values) => {
     register(values);
@@ -15,17 +16,20 @@ const createUser = () => {
       //   clearMessage()
     }, 3000);
   };
+  const respuestaGoogle = (response) => {
+    console.log(response);
+  };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
   return (
     <div className="container-registration">
-      <h1>Login</h1>
+      <h1>Registro de Usuarios</h1>
       <Form
         nname="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
+       
+        wrapperCol={{ span: 50 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
@@ -81,31 +85,52 @@ const createUser = () => {
             },
           ]}
         >
-          <Input />
+          <Input.Password />
         </Form.Item>
-     
-        <Radio.Group
-          defaultValue="a"
-          style={{
-            marginTop: 16,
-          }}
-        >
+
+        <Radio.Group>
           <Radio.Button value="a">Hombre</Radio.Button>
           <Radio.Button value="b">Mujer</Radio.Button>
           <Radio.Button value="c">No Binario</Radio.Button>
         </Radio.Group>
 
-        <Form.Item
-          wrapperCol={{
-            offset: 8,
-            span: 16,
-          }}
-        >
-          <Button type="primary" htmlType="submit">
-            Submit
+        <Form.Item>
+          <div className="textContainer">
+            <span>¿Ya estás registrado?</span>{" "}
+            <Link to="/login">
+              {" "}
+            
+              <Button htmlType="submit" style={{
+              marginTop: 15,
+            }}>Inicia sesión </Button>{" "}
+            </Link>
+          </div>
+
+          {message}
+          <Button
+            type="primary"
+            htmlType="submit"
+            style={{
+              marginTop: 15,
+            }}
+          >
+            Registarse
           </Button>
+        <p style={{
+              marginTop: 15,
+              color: "black",
+              fontSize: 15,
+              fontWeight: 500
+            }}>O Puedes intentarlo con 👇</p>
         </Form.Item>
       </Form>
+        <GoogleLogin 
+        clientId="265090794952-fds25dt9fkb1s23qo758l2hect3mse8u.apps.googleusercontent.com"
+        buttonText="Login"
+        onSuccess={respuestaGoogle}
+        onFailure={respuestaGoogle}
+        cookiePolicy={"single_host_origin"}
+         />
     </div>
   );
 };

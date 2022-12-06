@@ -53,18 +53,20 @@ const Header = () => {
               >
                 <Link to="/logout">Logout</Link>
               </Menu.Item>
-              <Menu.Item
-                key="Registration"
-                icon={<SolutionOutlined  />}
-         
-              >
-                <Link to="/Registration">Registration</Link>
-              </Menu.Item>
+              
             </>
           ) : (
+            <> 
             <Menu.Item key="login" icon={<UserAddOutlined />}>
               <Link to="/login">Login</Link>
             </Menu.Item>
+            <Menu.Item
+            key="Registration"
+            icon={<SolutionOutlined  />}>
+            <Link to="/Registration">Registration</Link>
+          </Menu.Item>
+          </>
+            
           )}
         </Menu>
       </div>
