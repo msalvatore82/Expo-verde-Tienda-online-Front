@@ -8,6 +8,7 @@ import {
   ShopOutlined,
   ShoppingCartOutlined,
   SearchOutlined,
+  SolutionOutlined
 } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
@@ -52,38 +53,49 @@ const Header = () => {
               >
                 <Link to="/logout">Logout</Link>
               </Menu.Item>
+              
             </>
           ) : (
+            <> 
             <Menu.Item key="login" icon={<UserAddOutlined />}>
               <Link to="/login">Login</Link>
             </Menu.Item>
+            <Menu.Item
+            key="Registration"
+            icon={<SolutionOutlined  />}>
+            <Link to="/Registration">Registration</Link>
+          </Menu.Item>
+          </>
+            
           )}
         </Menu>
       </div>
-      <div>
-        <Menu mode="horizontal">
+      <div className="nav-inferior">
+        <Menu mode="horizontal"
+        >
           <Menu.Item
             key="serch"
             style={{
-              display: "flex",
-              flexWrap: "wrap",
+              alignContent: "center",
               justifyContent: "center",
             }}
           >
             <Button
               type="dashed"
+              className="barra-search"
               icon={<SearchOutlined />}
               style={{
                 width: "350px",
+                direction: "vertical",
               }}
             >
-              Search
+              Busca aqui tus productos
             </Button>
           </Menu.Item>
           <Menu.Item key="cart" icon={<ShoppingCartOutlined />}>
             <Link to="/cart">
               {" "}
-              <Badge count={cart.length} size="small">
+              <Badge count={cart.length} size="x-small">
                 Cart
               </Badge>
             </Link>

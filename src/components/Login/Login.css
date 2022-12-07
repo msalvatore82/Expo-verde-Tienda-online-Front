@@ -1,7 +1,21 @@
-.container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.container-login{
+	background-color: rgba(255, 255, 255, 0.5);
+	box-shadow: 1px 1px 49px 21px rgba(0, 0, 0, 0.83);
+	-webkit-box-shadow: 1px 1px 49px 21px rgba(0, 0, 0, 0.83);
+	-moz-box-shadow: 1px 1px 49px 21px rgba(0, 0, 0, 0.83);
+	border-radius: 15px;
+	color: #B3B8CD;
+	padding-top: 30px;
+	padding-bottom: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 80%;
+	max-width: 100%;
+	text-align: center;
+    margin: auto;
+	margin-top: 15px;
+	margin-bottom: 15px
 }
 

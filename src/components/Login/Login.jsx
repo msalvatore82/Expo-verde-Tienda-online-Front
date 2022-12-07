@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from "react";
 import { Button, Form, Input } from "antd";
 import { UserContext } from "../../context/UserContext/UserState";
@@ -18,15 +19,14 @@ const Login = () => {
     }
 }, [login])
   return (
-    <div className="container">
+    <div className="container-login">
       <h1>Login</h1>
       <Form
         name="basic"
         labelCol={{
-          span: 8,
-        }}
+             }}
         wrapperCol={{
-          span: 16,
+        
         }}
         initialValues={{
           remember: true,
@@ -63,8 +63,7 @@ const Login = () => {
 
         <Form.Item
           wrapperCol={{
-            offset: 8,
-            span: 16,
+          
           }}
         >
           <Button type="primary" htmlType="submit">

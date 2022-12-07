@@ -57,9 +57,16 @@ const [visible,setVisible]=useState(false)
             return (
               (visible ? 
               <Collapse >
-                <Panel header={"Nº Pedido" + item.id} key="1">
+                <Panel className="panel" header={"Nº Pedido " + item.id} key="1" >
                   {item.Products.map((product) => (
-                    <p>{product.name}</p>
+            
+                    <> 
+                    <p >{product.name}</p>
+                    <p>{product.price}</p>
+                    <span>
+
+                    </span>
+                  </>
                   ))}
                 </Panel>
               </Collapse>
@@ -74,9 +81,3 @@ const [visible,setVisible]=useState(false)
 };
 
 export default Profile;
-
-// {user.Orders.map((order) => (order.Products.map((product) =>  {
-//   return (
-//
-// )
-// }
