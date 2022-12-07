@@ -3,8 +3,8 @@ import { useContext } from "react";
 import { Button, Form, Input, Radio } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext/UserState";
-import GoogleLogin from "react-google-login";
 import "./Registration.css";
+
 
 const createUser = () => {
   const { register, message } = useContext(UserContext);
@@ -16,9 +16,7 @@ const createUser = () => {
       //   clearMessage()
     }, 3000);
   };
-  const respuestaGoogle = (response) => {
-    console.log(response);
-  };
+   
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -124,13 +122,7 @@ const createUser = () => {
             }}>O Puedes intentarlo con 👇</p>
         </Form.Item>
       </Form>
-        <GoogleLogin 
-        clientId="265090794952-fds25dt9fkb1s23qo758l2hect3mse8u.apps.googleusercontent.com"
-        buttonText="Login"
-        onSuccess={respuestaGoogle}
-        onFailure={respuestaGoogle}
-        cookiePolicy={"single_host_origin"}
-         />
+        
     </div>
   );
 };
