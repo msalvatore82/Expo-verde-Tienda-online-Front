@@ -1,16 +1,20 @@
 import React from 'react'
-// import foto1 from "../../assets/img/banner-navidad.jpg"
+// import foto1 from "../assets/img/banner-navidad.jpg"
 import "./Home.scss"
-// import { Carousel } from 'antd';
+import { Carousel } from 'antd';
 import { Link } from 'react-router-dom';
 
 
-// const contentStyle = {
-//   color: '#fff',
-//   lineHeight: '160px',
-//   textAlign: 'center',
-//   background: '#364d79',
-// };
+const contentStyle = {
+  color: '#fff',
+  lineHeight: '160px',
+  textAlign: 'center',
+  background: '#364d79',
+};
+
+
+
+
 const Home = () => {
   return (
     <div className='product-collection'>
@@ -81,6 +85,12 @@ const Home = () => {
       </div>
     </div>
   );
+
+  
+
 };
 
+
 export default Home;
+
+
