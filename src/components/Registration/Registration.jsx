@@ -1,34 +1,42 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useContext } from "react";
-import { Button, Form, Input, Radio } from "antd";
+import { useContext, useState } from "react";
+import { Button, Form, Input, Modal, Radio, Result } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext/UserState";
-import GoogleLogin from "react-google-login";
 import "./Registration.css";
+import users from "../../context/UserContext/UserReducer";
 
 const createUser = () => {
   const { register, message } = useContext(UserContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   const onFinish = (values) => {
     register(values);
+    showModal()
     setTimeout(() => {
       navigate("/");
-      //   clearMessage()
-    }, 3000);
+    }, 4000);
   };
-  const respuestaGoogle = (response) => {
-    console.log(response);
-  };
-
+  
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+  
+  
   return (
     <div className="container-registration">
       <h1>Registro de Usuarios</h1>
       <Form
         nname="basic"
-       
         wrapperCol={{ span: 50 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
@@ -99,10 +107,14 @@ const createUser = () => {
             <span>¿Ya estás registrado?</span>{" "}
             <Link to="/login">
               {" "}
-            
-              <Button htmlType="submit" style={{
-              marginTop: 15,
-            }}>Inicia sesión </Button>{" "}
+              <Button
+                htmlType="submit"
+                style={{
+                  marginTop: 15,
+                }}
+              >
+                Inicia sesión{" "}
+              </Button>{" "}
             </Link>
           </div>
 
@@ -110,27 +122,34 @@ const createUser = () => {
           <Button
             type="primary"
             htmlType="submit"
+            onClick={createUser}
             style={{
               marginTop: 15,
+
             }}
           >
             Registarse
           </Button>
-        <p style={{
+          <p
+            style={{
               marginTop: 15,
               color: "black",
               fontSize: 15,
-              fontWeight: 500
-            }}>O Puedes intentarlo con 👇</p>
+              fontWeight: 500,
+            }}
+          >
+            O Puedes intentarlo con 👇
+          </p>
         </Form.Item>
       </Form>
-        <GoogleLogin 
-        clientId="265090794952-fds25dt9fkb1s23qo758l2hect3mse8u.apps.googleusercontent.com"
-        buttonText="Login"
-        onSuccess={respuestaGoogle}
-        onFailure={respuestaGoogle}
-        cookiePolicy={"single_host_origin"}
-         />
+      
+      <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        <Result
+          status="success"
+          title="Enhorabuena, te has registrado con é"
+          subTitle={users}
+        />
+      </Modal>
     </div>
   );
 };

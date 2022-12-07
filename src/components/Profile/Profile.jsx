@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext/UserState";
-import { Button, Spin, Badge, Card } from "antd";
+import { Button, Spin, Badge } from "antd";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Collapse } from "antd";
 import "./Profile.css";
@@ -14,6 +14,7 @@ const Profile = () => {
 const [visible,setVisible]=useState(false)
   useEffect(() => {
     getUserInfo();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

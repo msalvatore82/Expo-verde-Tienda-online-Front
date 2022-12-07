@@ -29,8 +29,7 @@ const Header = () => {
       <div className="nav-superior">
         <Menu
           mode="horizontal"
-          defaultSelectedKeys={["home"]}
-          style={{
+            style={{
             backgroundColor: "#293B31",
             color: "white",
           }}
@@ -63,7 +62,7 @@ const Header = () => {
             <Menu.Item
             key="Registration"
             icon={<SolutionOutlined  />}>
-            <Link to="/Registration">Registration</Link>
+            <Link to="/register">Registration</Link>
           </Menu.Item>
           </>
             
