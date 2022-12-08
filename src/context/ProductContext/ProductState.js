@@ -42,13 +42,12 @@ export const ProductsProvider = ({ children }) => {
     return res;
   };
 
-  const createfav = async (product) => {
+  const createfav = async (productId) => {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
       const res = await axios.post(
         API_URL + "/products/fav",
-        product,
-        {product },
+        {productId },
         {
           headers: {
             authorization: token,

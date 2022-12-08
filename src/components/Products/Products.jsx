@@ -1,26 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Card, Button, Tooltip } from "antd";
+import React, { useContext, useEffect } from "react";
+import { Card, Button, Badge } from "antd";
 import "./Products.css";
 import { ShoppingCartOutlined, HeartOutlined } from "@ant-design/icons";
 import { ProductsContext } from "../../context/ProductContext/ProductState";
 
 const Products = () => {
-  const { products, getProducts, addCart, cart, createfav } = useContext(ProductsContext);
-  const [ data, setData ] = useState({
-    fav: '',
-    
-})
-  useEffect(() => {
+  const { products, getProducts, addCart, cart, createfav } =
+    useContext(ProductsContext);
+   useEffect(() => {
     getProducts();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const storageFav = async (e) => {
-    e.preventDefault();
-    await createfav( data.fav );
-    setData({fav: ''});
-   
-}
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -29,6 +21,7 @@ const Products = () => {
   return (
     <div className="container-products">
       {products.map((product) => {
+        console.log(product.Users);
         return (
           <div key={product.id} className="site-card-border-less-wrapper">
             <Card
@@ -48,33 +41,39 @@ const Products = () => {
                   border: "1px solid gray",
                   borderRadius: 10,
                 }}
-              />
-
-              <p>
-                {" "}
-                <Tooltip title="Heart">
-                  <Button 
-                  onClick={() => {
-                    setData({...data, fav: " +1"});
-                    storageFav();
-                  }}
-                     style={{
-                      border: "none",
-                    }}
-                    icon={
-                      <HeartOutlined
-                        style={{
-                          color: "red",
-                        }}
-                      />
-                    }
-                  />
-                </Tooltip>
-                {product.price} €
-              </p>
+              />{" "}
+              <p>{product.price} €</p>
               <Button onClick={() => addCart(product)}>
                 Add Cart <ShoppingCartOutlined />
               </Button>
+              <Button
+                onClick={() => {
+                  createfav(product.id);
+                  // console.log(product.id)
+                }}
+                style={{
+                  border: "none",
+                  marginLeft: 15,
+                }}
+                icon={
+                  <HeartOutlined
+                    style={{
+                      color: "red",
+                      fontSize: "25px",
+                      border: "none",
+                    }}
+                  />
+                }
+              />
+              <Badge
+                count={product.Users.length}
+                size="small"
+                style={{
+                  fontSize: 9,
+                  marginBottom: 30,
+                  marginLeft: -10,
+                }}
+              ></Badge>
             </Card>
           </div>
         );
@@ -86,5 +85,3 @@ const Products = () => {
 export default Products;
 
 
-
-// {/* <HeartFilled /> */}

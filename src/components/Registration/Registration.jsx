@@ -95,11 +95,11 @@ const createUser = () => {
         >
           <Input.Password />
         </Form.Item>
-
-        <Radio.Group>
-          <Radio.Button value="a">Hombre</Radio.Button>
-          <Radio.Button value="b">Mujer</Radio.Button>
-          <Radio.Button value="c">No Binario</Radio.Button>
+          {/* no se me carga el sexo */}
+        <Radio.Group name="gender">
+          <Radio.Button  name="Hombre" value="Hombre">Hombre</Radio.Button>
+          <Radio.Button name="Mujer" value="Mujer">Mujer</Radio.Button>
+          <Radio.Button name="NoBi" value="NoBi">No Binario</Radio.Button>
         </Radio.Group>
 
         <Form.Item>

@@ -8,7 +8,7 @@ import {
   ShopOutlined,
   ShoppingCartOutlined,
   SearchOutlined,
-  SolutionOutlined
+  SolutionOutlined,
 } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
@@ -29,9 +29,10 @@ const Header = () => {
       <div className="nav-superior">
         <Menu
           mode="horizontal"
-            style={{
+          style={{
             backgroundColor: "#293B31",
             color: "white",
+            justifyContent: "space-evenly"
           }}
         >
           <Menu.Item key="home" icon={<HomeOutlined />}>
@@ -52,26 +53,23 @@ const Header = () => {
               >
                 <Link to="/logout">Logout</Link>
               </Menu.Item>
-              
             </>
           ) : (
-            <> 
-            <Menu.Item key="login" icon={<UserAddOutlined />}>
-              <Link to="/login">Login</Link>
-            </Menu.Item>
-            <Menu.Item
-            key="Registration"
-            icon={<SolutionOutlined  />}>
-            <Link to="/register">Registration</Link>
-          </Menu.Item>
-          </>
-            
+            <>
+              <Menu.Item key="login" icon={<UserAddOutlined />}>
+                <Link to="/login">Login</Link>
+              </Menu.Item>
+              <Menu.Item key="Registration" icon={<SolutionOutlined />}>
+                <Link to="/register">Registration</Link>
+              </Menu.Item>
+            </>
           )}
         </Menu>
       </div>
       <div className="nav-inferior">
-        <Menu mode="horizontal"
-        >
+        <Menu mode="horizontal" style={{
+            justifyContent: "space-evenly",
+          }}>
           <Menu.Item
             key="serch"
             style={{
@@ -91,7 +89,17 @@ const Header = () => {
               Busca aqui tus productos
             </Button>
           </Menu.Item>
-          <Menu.Item key="cart" icon={<ShoppingCartOutlined />}>
+          <Menu.Item
+            key="cart"
+            icon={
+              <ShoppingCartOutlined
+                style={{
+                  fontSize: "25px",
+                  border: "none",
+                }}
+              />
+            }
+          >
             <Link to="/cart">
               {" "}
               <Badge count={cart.length} size="x-small">
