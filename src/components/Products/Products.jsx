@@ -1,18 +1,15 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Card, Button, Badge } from "antd";
 import "./Products.css";
 import { ShoppingCartOutlined, HeartOutlined } from "@ant-design/icons";
 import { ProductsContext } from "../../context/ProductContext/ProductState";
 
 const Products = () => {
-  const { products, getProducts, addCart, cart, createfav } =
+    const { products, getProducts, addCart, cart, createfav } =
     useContext(ProductsContext);
-   useEffect(() => {
+    useEffect(() => {
     getProducts();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+    }, []);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -49,7 +46,9 @@ const Products = () => {
               <Button
                 onClick={() => {
                   createfav(product.id);
-                  // console.log(product.id)
+                 
+                  getProducts();
+                  
                 }}
                 style={{
                   border: "none",
@@ -67,6 +66,7 @@ const Products = () => {
               />
               <Badge
                 count={product.Users.length}
+                
                 size="small"
                 style={{
                   fontSize: 9,
@@ -83,5 +83,3 @@ const Products = () => {
 };
 
 export default Products;
-
-
