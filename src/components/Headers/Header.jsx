@@ -36,15 +36,15 @@ const Header = () => {
           }}
         >
           <Menu.Item key="home" icon={<HomeOutlined />}>
-            <Link to="/">Home</Link>
+            <Link to="/">Incio</Link>
           </Menu.Item>
           <Menu.Item key="products" icon={<ShopOutlined />}>
-            <Link to="/products">Products</Link>
+            <Link to="/products">Productos</Link>
           </Menu.Item>
           {token ? (
             <>
               <Menu.Item key="profile" icon={<UserOutlined />}>
-                <Link to="/profile">Profile</Link>
+                <Link to="/profile">Perfil</Link>
               </Menu.Item>
               <Menu.Item
                 key="logout"
@@ -60,7 +60,7 @@ const Header = () => {
                 <Link to="/login">Login</Link>
               </Menu.Item>
               <Menu.Item key="Registration" icon={<SolutionOutlined />}>
-                <Link to="/register">Registration</Link>
+                <Link to="/register">Resgistro</Link>
               </Menu.Item>
             </>
           )}
@@ -103,7 +103,7 @@ const Header = () => {
             <Link to="/cart">
               {" "}
               <Badge count={cart.length} size="x-small">
-                Cart
+                Carrito
               </Badge>
             </Link>
           </Menu.Item>

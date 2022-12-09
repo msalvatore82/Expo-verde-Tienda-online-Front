@@ -18,7 +18,7 @@ const Products = () => {
   return (
     <div className="container-products">
       {products.map((product) => {
-        console.log(product.Users);
+        console.log(product);
         return (
           <div key={product.id} className="site-card-border-less-wrapper">
             <Card
