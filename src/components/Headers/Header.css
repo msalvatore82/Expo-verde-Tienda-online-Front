@@ -1,55 +1,50 @@
-
-a{
-    all:unset;
+a {
+    all: unset;
 }
 
-.nav-inferior{
+.nav-inferior {
     justify-content: center;
-   
-    
-}
-.nav-superior{
-    justify-content: center;
-   
-    
+
+
 }
 
-input{
+.nav-superior {
+    justify-content: center;
+
+
+}
+
+
+input {
     border-radius: 5px;
     width: 30em;
     height: 2.2em;
     border: none;
     margin: 5px;
 
-    }
-    input::placeholder{
-        margin: 15px;
-        padding: 15px;
-    
-        }
+}
 
-    .btn-serch{
-        border-radius: 5px;
-        width: 8em;
+input::placeholder {
+    margin: 15px;
+    padding: 15px;
+
+}
+
+.btn-serch {
+    border-radius: 5px;
+    width: 8em;
     height: 2.2em;
     border: none;
     cursor: pointer;
     font-weight: 700;
-    }
+}
 
-    .btn-serch:hover{
-        background-color: rgb(189, 212, 165);
-    }
+.btn-serch:hover {
+    background-color: rgb(189, 212, 165);
+}
 
-    .barra-search{
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-
-
-
-
-
-
+.barra-search {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

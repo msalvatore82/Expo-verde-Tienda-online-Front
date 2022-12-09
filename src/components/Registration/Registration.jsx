@@ -1,32 +1,45 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useContext } from "react";
-import { Button, Form, Input, Radio } from "antd";
+import { useContext, useState } from "react";
+import { Button, Form, Input, Modal, Radio, Result } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext/UserState";
 import "./Registration.css";
 
-
 const createUser = () => {
   const { register, message } = useContext(UserContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   const onFinish = (values) => {
     register(values);
+    showModal()
     setTimeout(() => {
       navigate("/");
       //   clearMessage()
     }, 3000);
   };
-   
+  const respuestaGoogle = (response) => {
+    console.log(response);
+  };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
+  
+  
   return (
     <div className="container-registration">
       <h1>Registro de Usuarios</h1>
       <Form
         nname="basic"
-       
         wrapperCol={{ span: 50 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
@@ -85,11 +98,11 @@ const createUser = () => {
         >
           <Input.Password />
         </Form.Item>
-
-        <Radio.Group>
-          <Radio.Button value="a">Hombre</Radio.Button>
-          <Radio.Button value="b">Mujer</Radio.Button>
-          <Radio.Button value="c">No Binario</Radio.Button>
+          {/* no se me carga el gender */}
+        <Radio.Group name="gender">
+          <Radio.Button  name="Hombre" value="Hombre">Hombre</Radio.Button>
+          <Radio.Button name="Mujer" value="Mujer">Mujer</Radio.Button>
+          <Radio.Button name="NoBi" value="NoBi">No Binario</Radio.Button>
         </Radio.Group>
 
         <Form.Item>
@@ -97,10 +110,14 @@ const createUser = () => {
             <span>¿Ya estás registrado?</span>{" "}
             <Link to="/login">
               {" "}
-            
-              <Button htmlType="submit" style={{
-              marginTop: 15,
-            }}>Inicia sesión </Button>{" "}
+              <Button
+                htmlType="submit"
+                style={{
+                  marginTop: 15,
+                }}
+              >
+                Inicia sesión{" "}
+              </Button>{" "}
             </Link>
           </div>
 
@@ -108,21 +125,16 @@ const createUser = () => {
           <Button
             type="primary"
             htmlType="submit"
+            onClick={createUser}
             style={{
               marginTop: 15,
+
             }}
           >
             Registarse
           </Button>
-        <p style={{
-              marginTop: 15,
-              color: "black",
-              fontSize: 15,
-              fontWeight: 500
-            }}>O Puedes intentarlo con 👇</p>
-        </Form.Item>
+                  </Form.Item>
       </Form>
-        
     </div>
   );
 };

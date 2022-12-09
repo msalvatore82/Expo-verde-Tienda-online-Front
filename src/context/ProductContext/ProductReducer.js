@@ -5,6 +5,11 @@ const products = (state, action) => {
           ...state,
           products: action.payload,
         };
+        case "GET_PRODUCT_BY_NAME":
+        return {
+          ...state,
+          products: action.payload,
+        };
       case "ADD_CART":
         return {
           ...state,
@@ -21,3 +26,6 @@ const products = (state, action) => {
   };
   
   export default products;
+
+
+  

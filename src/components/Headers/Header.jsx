@@ -8,7 +8,7 @@ import {
   ShopOutlined,
   ShoppingCartOutlined,
   SearchOutlined,
-  SolutionOutlined
+  SolutionOutlined,
 } from "@ant-design/icons";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
@@ -29,22 +29,21 @@ const Header = () => {
       <div className="nav-superior">
         <Menu
           mode="horizontal"
-          defaultSelectedKeys={["home"]}
           style={{
             backgroundColor: "#293B31",
             color: "white",
-          }}
+            }}
         >
           <Menu.Item key="home" icon={<HomeOutlined />}>
-            <Link to="/">Home</Link>
+            <Link to="/">Incio</Link>
           </Menu.Item>
           <Menu.Item key="products" icon={<ShopOutlined />}>
-            <Link to="/products">Products</Link>
+            <Link to="/products">Productos</Link>
           </Menu.Item>
           {token ? (
             <>
               <Menu.Item key="profile" icon={<UserOutlined />}>
-                <Link to="/profile">Profile</Link>
+                <Link to="/profile">Perfil</Link>
               </Menu.Item>
               <Menu.Item
                 key="logout"
@@ -53,26 +52,23 @@ const Header = () => {
               >
                 <Link to="/logout">Logout</Link>
               </Menu.Item>
-              
             </>
           ) : (
-            <> 
-            <Menu.Item key="login" icon={<UserAddOutlined />}>
-              <Link to="/login">Login</Link>
-            </Menu.Item>
-            <Menu.Item
-            key="Registration"
-            icon={<SolutionOutlined  />}>
-            <Link to="/Registration">Registration</Link>
-          </Menu.Item>
-          </>
-            
+            <>
+              <Menu.Item key="login" icon={<UserAddOutlined />}>
+                <Link to="/login">Login</Link>
+              </Menu.Item>
+              <Menu.Item key="Registration" icon={<SolutionOutlined />}>
+                <Link to="/register">Resgistro</Link>
+              </Menu.Item>
+            </>
           )}
         </Menu>
       </div>
       <div className="nav-inferior">
-        <Menu mode="horizontal"
-        >
+        <Menu mode="horizontal" style={{
+            justifyContent: "space-evenly",
+          }}>
           <Menu.Item
             key="serch"
             style={{
@@ -87,16 +83,28 @@ const Header = () => {
               style={{
                 width: "350px",
                 direction: "vertical",
+                alignContent:"end"
               }}
             >
               Busca aqui tus productos
             </Button>
           </Menu.Item>
-          <Menu.Item key="cart" icon={<ShoppingCartOutlined />}>
+          <Menu.Item
+            key="cart"
+            icon={
+              <ShoppingCartOutlined
+                style={{
+                  fontSize: "25px",
+                  border: "none",
+                  alignItems: "flex-end"
+                }}
+              />
+            }
+          >
             <Link to="/cart">
               {" "}
               <Badge count={cart.length} size="x-small">
-                Cart
+                Carrito
               </Badge>
             </Link>
           </Menu.Item>

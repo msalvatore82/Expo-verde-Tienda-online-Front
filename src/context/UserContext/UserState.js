@@ -48,9 +48,6 @@ export const UserProvider = ({ children }) => {
       payload: res.data,
     });
   };
-  
-
-  
 
   const logout = async () => {
     const token = JSON.parse(localStorage.getItem("token"));
@@ -64,14 +61,15 @@ export const UserProvider = ({ children }) => {
     });
     if (res.data) {
       localStorage.removeItem("token");
-    } 
-  }
+    }
+  };
   return (
     <UserContext.Provider
       value={{
         token: state.token,
         user: state.user,
         message: state.message,
+
         login,
         getUserInfo,
         logout,
