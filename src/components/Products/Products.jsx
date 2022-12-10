@@ -5,47 +5,54 @@ import { ShoppingCartOutlined, HeartOutlined } from "@ant-design/icons";
 import { ProductsContext } from "../../context/ProductContext/ProductState";
 
 const Products = () => {
-    const { products, getProducts, addCart, cart, createfav,getProductByName,getProductByCategory,orderProductAsc,orderProductDes } =
-    useContext(ProductsContext);
-    const [busqueda, setBusqueda] = useState('');
-    const handleChange = e => {
-      setBusqueda(e.target.value)
-     
-    }
+  const {
+    products,
+    getProducts,
+    addCart,
+    cart,
+    createfav,
+    getProductByName,
+    getProductByCategory,
+    orderProductAsc,
+    orderProductDes,
+  } = useContext(ProductsContext);
   
-    const buscar = (name) => {
-      getProductByName(name)
-      document.getElementsByClassName("buscador")[0].value = "";
-    }
-  
-    const showAll = () => {
-      getProducts()
-      document.getElementsByClassName("buscador")[0].value = "";
-    }
-  
-    const filtro = (num) => {
-      getProductByCategory(num)
-    }
-  
-    const orderAsc = () => {
-      orderProductAsc()
-    }
-  
-    const orderDesc = () => {
-      orderProductDes()
-    }
+  const [busqueda, setBusqueda] = useState("");
+  const handleChange = (e) => {
+    setBusqueda(e.target.value);
+  };
 
-    
-    useEffect(() => {
+  const buscar = (name) => {
+    getProductByName(name);
+    document.getElementsByClassName("buscador")[0].value = "";
+  };
+
+  const showAll = () => {
     getProducts();
-    }, []);
+    document.getElementsByClassName("buscador")[0].value = "";
+  };
+
+  const filtro = (num) => {
+    getProductByCategory(num);
+  };
+
+  const orderAsc = () => {
+    orderProductAsc();
+  };
+
+  const orderDesc = () => {
+    orderProductDes();
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
   return (
-    
     <div className="container-products">
       {products.map((product) => {
         console.log(product);
@@ -76,9 +83,8 @@ const Products = () => {
               <Button
                 onClick={() => {
                   createfav(product.id);
-                 
+
                   getProducts();
-                  
                 }}
                 style={{
                   border: "none",
@@ -96,7 +102,6 @@ const Products = () => {
               />
               <Badge
                 count={product.Users.length}
-                
                 size="small"
                 style={{
                   fontSize: 9,
@@ -110,9 +115,6 @@ const Products = () => {
       })}
     </div>
   );
-
-
-  
 };
 
 export default Products;
