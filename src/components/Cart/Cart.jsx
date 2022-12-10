@@ -6,6 +6,7 @@ import { OrderContext } from "../../context/OrderContext/OrderState";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./Cart.css";
+import gif from '../../assets/carrito-de-compra-2.gif'
 
 const Cart = () => {
   const { cart, clearCart } = useContext(ProductsContext);
@@ -32,6 +33,10 @@ const Cart = () => {
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
+  
+  if(cart.length<=0){
+    return <div className='empty-cart'>  <span className='message-cart'>No tienes ningún producto añadido</span><img className='imgcat' src={gif} alt="" /></div>
+}
 
   return (
     <>
