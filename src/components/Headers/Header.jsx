@@ -102,7 +102,7 @@ const Header = () => {
             }
           >
             <Link to="/cart">
-              {" "}
+            
               <Badge count={cart.length} size="x-small">
                 Carrito
               </Badge>

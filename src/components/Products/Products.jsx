@@ -1,12 +1,41 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Card, Button, Badge } from "antd";
-import "./Products.css";
+import "./Products.scss";
 import { ShoppingCartOutlined, HeartOutlined } from "@ant-design/icons";
 import { ProductsContext } from "../../context/ProductContext/ProductState";
 
 const Products = () => {
-    const { products, getProducts, addCart, cart, createfav } =
+    const { products, getProducts, addCart, cart, createfav,getProductByName,getProductByCategory,orderProductAsc,orderProductDes } =
     useContext(ProductsContext);
+    const [busqueda, setBusqueda] = useState('');
+    const handleChange = e => {
+      setBusqueda(e.target.value)
+     
+    }
+  
+    const buscar = (name) => {
+      getProductByName(name)
+      document.getElementsByClassName("buscador")[0].value = "";
+    }
+  
+    const showAll = () => {
+      getProducts()
+      document.getElementsByClassName("buscador")[0].value = "";
+    }
+  
+    const filtro = (num) => {
+      getProductByCategory(num)
+    }
+  
+    const orderAsc = () => {
+      orderProductAsc()
+    }
+  
+    const orderDesc = () => {
+      orderProductDes()
+    }
+
+    
     useEffect(() => {
     getProducts();
     }, []);
@@ -16,6 +45,7 @@ const Products = () => {
   }, [cart]);
 
   return (
+    
     <div className="container-products">
       {products.map((product) => {
         console.log(product);
@@ -80,6 +110,9 @@ const Products = () => {
       })}
     </div>
   );
+
+
+  
 };
 
 export default Products;

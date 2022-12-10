@@ -12,3 +12,14 @@
     margin: auto;
     margin-top: 15px;
     }
+
+.empty-cart {
+    text-align: center;
+    margin-top: 150px;
+    margin-bottom: 150px;
+
+}
+
+.message-cart {
+    font-size: 30px;
+}
