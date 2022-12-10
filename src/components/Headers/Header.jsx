@@ -32,7 +32,7 @@ const Header = () => {
           style={{
             backgroundColor: "#293B31",
             color: "white",
-            }}
+          }}
         >
           <Menu.Item key="home" icon={<HomeOutlined />}>
             <Link to="/">Incio</Link>
@@ -66,9 +66,12 @@ const Header = () => {
         </Menu>
       </div>
       <div className="nav-inferior">
-        <Menu mode="horizontal" style={{
+        <Menu
+          mode="horizontal"
+          style={{
             justifyContent: "space-evenly",
-          }}>
+          }}
+        >
           <Menu.Item
             key="serch"
             style={{
@@ -83,7 +86,7 @@ const Header = () => {
               style={{
                 width: "350px",
                 direction: "vertical",
-                alignContent:"end"
+                alignContent: "end",
               }}
             >
               Busca aqui tus productos
@@ -96,13 +99,12 @@ const Header = () => {
                 style={{
                   fontSize: "25px",
                   border: "none",
-                  alignItems: "flex-end"
+                  alignItems: "flex-end",
                 }}
               />
             }
           >
             <Link to="/cart">
-              {" "}
               <Badge count={cart.length} size="x-small">
                 Carrito
               </Badge>

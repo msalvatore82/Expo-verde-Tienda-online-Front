@@ -4,6 +4,7 @@ import { Button, Form, Input, Modal, Radio, Result } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext/UserState";
 import "./Registration.css";
+import users from "../../context/UserContext/UserReducer";
 
 const createUser = () => {
   const { register, message } = useContext(UserContext);
@@ -24,12 +25,9 @@ const createUser = () => {
     setTimeout(() => {
       navigate("/");
       //   clearMessage()
-    }, 3000);
+    }, 2000);
   };
-  const respuestaGoogle = (response) => {
-    console.log(response);
-  };
-
+  
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
@@ -135,6 +133,13 @@ const createUser = () => {
           </Button>
                   </Form.Item>
       </Form>
+      <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+        <Result
+          status="success"
+          title="Enhorabuena, Te has registrado con exito"
+          subTitle={users}
+        />
+      </Modal>
     </div>
   );
 };

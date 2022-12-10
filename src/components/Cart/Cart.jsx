@@ -22,8 +22,6 @@ const Cart = () => {
   };
   const navigate = useNavigate();
   const createNewOrder = () => {
-    
-
     createOrder(cart);
     showModal();
     setTimeout(() => {

@@ -61,6 +61,46 @@ export const ProductsProvider = ({ children }) => {
       });
     } catch (error) {
       console.error(error);
+    };
+  }
+    const createReview = async (ProductId, content ) => {
+      try {
+        const token = JSON.parse(localStorage.getItem("token"));
+        const res = await axios.post(
+          API_URL + "/products/review",
+         {ProductId, content },
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        );
+  
+        dispatch({
+          type: "Review",
+          payload: res.data,
+        });
+      } catch (error) {
+        console.error(error);
+      }
+  };
+  const deleteReview = async (reviewsid) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      console.log(token);
+      await axios.delete( 
+        API_URL + "/products/deleteReview/",
+        {
+          headers: {
+            authorization: token,
+          },
+        }
+      );
+
+    } 
+    
+    catch (error) {
+      console.error(error);
     }
   };
 
@@ -75,6 +115,8 @@ export const ProductsProvider = ({ children }) => {
         clearCart,
         getProductsByName,
         createfav,
+        createReview,
+        deleteReview
       }}
     >
       {children}
