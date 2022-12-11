@@ -6,12 +6,17 @@ import { OrderContext } from "../../context/OrderContext/OrderState";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./Cart.css";
-import gif from '../../assets/carrito-de-compra-2.gif'
+import gif from "../../assets/carrito-de-compra-2.gif";
 
 const Cart = () => {
   const { cart, clearCart } = useContext(ProductsContext);
   const { createOrder } = useContext(OrderContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // const borrarProduct = () => {
+    // product.indexOf()
+  // };
+
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -23,8 +28,6 @@ const Cart = () => {
   };
   const navigate = useNavigate();
   const createNewOrder = () => {
-    
-
     createOrder(cart);
     showModal();
     setTimeout(() => {
@@ -32,13 +35,19 @@ const Cart = () => {
       navigate("/");
     }, 4000);
   };
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
-  
-  if(cart.length<=0){
-    return <div className='empty-cart'>  <span className='message-cart'>No tienes ningún producto añadido</span><img className='imgcat' src={gif} alt="" /></div>
-}
+  if (cart.length <= 0) {
+    return (
+      <div className="empty-cart">
+        {" "}
+        <span className="message-cart">No tienes ningún producto añadido</span>
+        <img className="imgcat" src={gif} alt="" />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -86,7 +95,7 @@ const Cart = () => {
                   }}
                 />
                 <p>{cartItem.price} €</p>
-                <Button type="primary" danger>
+                <Button type="primary" danger >
                   Eliminar
                 </Button>
               </Card>

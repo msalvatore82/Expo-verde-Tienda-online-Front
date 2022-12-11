@@ -47,15 +47,17 @@ const Profile = () => {
                 style={{
                   margin: "10px",
                   border: "1px solid black",
-                }}
+                 }}
               >
-                <Badge count={user.Orders.length} size="x-small"  ></Badge>
-                Mis Pedidos{" "}
+                
+                 Mis Pedidos
                 <ShoppingCartOutlined
                   style={{
                     fontSize: 20,
+                  
                   }}
                 />
+                <Badge  count= {user.Orders.length} size="x-small"  ></Badge>
               </Button>
               <Button
                 style={{
@@ -69,7 +71,7 @@ const Profile = () => {
                     fontSize: 20,
                   }}
                 />
-                <Badge count={0} size="x-small"></Badge>
+                <Badge count={5} size="x-small"></Badge>
               </Button>
             </div>
           </div>
