@@ -1,70 +1,157 @@
-# Getting Started with Create React App
+#  React Ecommerce Tienda Expo Verde
+![foto](./src/assets/gudoe-unatj.gif)
+## Índice
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* About the project:
+    * Installation and deployment
+    * Technologies used
+    * Origin
+    * Objectives
+    * Challenges presented
+    * Authors
 
-## Available Scripts
+## About the project
 
-In the project directory, you can run:
+In this ocassion we present an e-commerce shop of plants and decoration articles in React with a Sequelize backend. You can register in the web page, login and logout.Once you´re loged in you can add products to the cart and buy them. You can also add your favourite products, check the logged user information and order history. 
 
-### `npm start`
+### 💫 Installation and deployment
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To download the repository, in Visual Studio, open a terminal and run the following command:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+Ecommerce frontend:
+```
+$ git clone https://github.com/msalvatore82/Expo-verde-Tienda-online-Front.git
+```
+Ecommerce backend:
+```
+$ git clone https://github.com/msalvatore82/Expo-verde-Tienda-online-Back.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ Next, you will need to download the external modules. To do this, perform the following command:
 
-### `npm run build`
+```
+$ npm i
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Then, start the React frontend as well as the Sequelize backend via:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+$ npm start
+```
+It will be necessary if you run the database that you make use of the following series of commands:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Modify the database, inside config/config.example.json so that you can use the project.
+```
+"development": {
+      "username": "Your user", 
+      "password": "Your password",
+      "database": "Your database's name",
+      "host": "Your host",
+      "dialect": "mysql",
+      "jwt_secret": "Your jwt password"
+```
 
-### `npm run eject`
+```
+sequelize db:create
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+sequelize db:migrate
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+sequelize db:seed:all
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Now you will be able to navigate through the frontend loading all backend products.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 💻 Technologies used
 
-## Learn More
+* HTML
+* CSS
+* Sass
+* Javascript
+* React
+* React-GlobalContext
+* React-Router
+* Sequelize 
+* NodeJS 
+* Axios 
+* Bootstrap
+* Ant-Design 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Origin
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project is intended as an exercise in The Bridge that allows us to put into practice our newly acquired knowledge of React, specifically using React Router and Sass. In the same way we take advantage of a previous Backend project with Sequelize, which will necessarily have to undergo modifications to adapt to the new project. 
 
-### Code Splitting
+### ⚔️ Objectives
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Create a REST API that is capable of the following:
+* A React mini-project to practice all the basic elements of React already seen.
+* User registration.
+* User login.
+* To be able to see the products and add them to the shopping cart.
+* Capable to create orders.
+* See your data at your profile.
 
-### Analyzing the Bundle Size
+#### ⚔️ Minimum components:
+* Register
+* Login
+* Home
+* Products
+* Product
+* Profile. Profile view with the logged data user and his orders.
+* Header
+* Footer
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Implementation of React Router on your page
+* /home. Home of the app
+/login
+/register
+/profile. 
+Use Context 
 
-### Making a Progressive Web App
+#### ⚔️ Challenge:
+* Components may not exceed 400 lines of code.
+* Functions must not exceed 75 lines of code.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### ⚔️ App functions
 
-### Advanced Configuration
+ In this ecommerce the user can register directly by adding his or her information to the database. Once registered, you can log in and access the shop to add products to the cart. At the same time, you can add your favourite products to buy them later. From your user profile, you can also access to the the historic purchases.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+—— Fav products——<br> You can add your favorite products.
+![foto](./src/assets/favs.png)
+—— Shopping cart——<br>
+ We have implemented a cart that allows you to enter products in it. If there are no products in the cart, it will show a notification to let the user know the cart is empty. The added products will be displayed in the shopping cart and you will be able to place the order. 
+![foto](./src/assets/cart.png)
+—— Login——<br>
+The resulting login screen allows you to access the online shop by entering the fields. If you are not a registered user, you can access the registration screen directly from the login. 
+![foto](./src/assets/login.png)
+—— Register——<br>
+Similar to the login screen, it allows us to create new users and enter them in the database for later login. 
+![foto](./src/assets/register.png)
+—— User profile——<br>
+In the user profile we can access the user's information and order history. The order history is shown indicating the products in each of them. 
+![foto](./src/assets/user.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🔜 Challenges
+ 
+—— backend adapting ——<br>
+Taking as a starting point a previous backend made with Sequelize we have made changes in the tables, controllers and relations. We made a new seeder to extend the shop catalogue.  In addition, several endpoints of the backend needed to be adapted and incorporated.
 
-### `npm run build` fails to minify
+—— Adding images ——<br>
+We add images for all products directly into the database, so that they can be displayed in the frontend directly. 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## 🔜 Future implementations
+
+* Responsive design. 
+* Bugging corrections 
+* Add reviews to the products.
+* Add administration mode and products CRUD. 
+
+
+
+## Authors
+
+### [Matias](https://github.com/msalvatore82)
+### [Diego](https://github.com/diegopalones)
+

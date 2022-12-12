@@ -6,6 +6,11 @@ import {
   HeartOutlined,
   FormOutlined,
 } from "@ant-design/icons";
+import {
+  ShoppingCartOutlined,
+  HeartOutlined,
+  FormOutlined,
+} from "@ant-design/icons";
 import { ProductsContext } from "../../context/ProductContext/ProductState";
 import { faMaximize } from "@fortawesome/free-solid-svg-icons";
 
@@ -107,6 +112,16 @@ const Products = () => {
               <Button onClick={() => addCart(product)}>
                 Add Cart <ShoppingCartOutlined />
               </Button>
+              <div>
+                <FormOutlined
+                  onClick={() => setOpen(true)}
+                  style={{
+                    border: "none",
+                    marginLeft: 15,
+                    fontSize: 20,
+                  }}
+                />
+              </div>
               <Button
                 onClick={() => {
                   createfav(product.id);
@@ -211,3 +226,5 @@ const Products = () => {
 };
 
 export default Products;
+
+// ProductReviews

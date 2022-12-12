@@ -60,7 +60,7 @@ const Header = () => {
                 <Link to="/login">Login</Link>
               </Menu.Item>
               <Menu.Item key="Registration" icon={<SolutionOutlined />}>
-                <Link to="/register">Resgistro</Link>
+                <Link to="/register">Registro</Link>
               </Menu.Item>
             </>
           )}
