@@ -76,3 +76,23 @@ button.primary.ghost {
 	background-color: transparent;
 	color: #02899C;
 }
+
+.flex-container {
+	display: flex;
+	flex-direction: row;
+
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+  }
+  
+  .flex-items {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 0;
+	flex-shrink: 1;
+	flex-basis: auto;
+	align-self: auto;
+	order: 0;
+  }

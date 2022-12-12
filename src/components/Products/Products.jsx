@@ -1,24 +1,55 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Card, Button, Row } from "antd";
+import { Card, Button, Badge } from "antd";
 import "./Products.scss";
-import { ShoppingCartOutlined } from "@ant-design/icons";
+import { ShoppingCartOutlined, HeartOutlined } from "@ant-design/icons";
 import { ProductsContext } from "../../context/ProductContext/ProductState";
 
 
-
 const Products = () => {
-  const { products, getProducts, addCart, cart } = useContext(ProductsContext);
-  useEffect(() => {
+    const { products, getProducts, addCart, cart, createfav,getProductByName,getProductByCategory,orderProductAsc,orderProductDes } =
+    useContext(ProductsContext);
+    const [busqueda, setBusqueda] = useState('');
+    const handleChange = e => {
+      setBusqueda(e.target.value)
+     
+    }
+  
+    const buscar = (name) => {
+      getProductByName(name)
+      document.getElementsByClassName("buscador")[0].value = "";
+    }
+  
+    const showAll = () => {
+      getProducts()
+      document.getElementsByClassName("buscador")[0].value = "";
+    }
+  
+    const filtro = (num) => {
+      getProductByCategory(num)
+    }
+  
+    const orderAsc = () => {
+      orderProductAsc()
+    }
+  
+    const orderDesc = () => {
+      orderProductDes()
+    }
+
+    
+    useEffect(() => {
     getProducts();
-  }, []);
+    }, []);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
   return (
+    
     <div className="container-products">
       {products.map((product) => {
+        console.log(product);
         return (
           <div key={product.id} className="site-card-border-less-wrapper">
             <Card
@@ -28,67 +59,58 @@ const Products = () => {
                 width: 300,
                 border: "1px solid black",
                 textAlign: "center",
-                
               }}
             >
-                <img src={product.image} alt="" style={{
-                width: 150,
-                border: "1px solid gray",
-                borderRadius: 10,
-              }} 
-                />
+              <img
+                src={product.image}
+                alt=""
+                style={{
+                  width: 150,
+                  border: "1px solid gray",
+                  borderRadius: 10,
+                }}
+              />{" "}
               <p>{product.price} €</p>
               <Button onClick={() => addCart(product)}>
                 Add Cart <ShoppingCartOutlined />
               </Button>
+              <Button
+                onClick={() => {
+                  createfav(product.id);
+                 
+                  getProducts();
+                  
+                }}
+                style={{
+                  border: "none",
+                  marginLeft: 15,
+                }}
+                icon={
+                  <HeartOutlined
+                    style={{
+                      color: "red",
+                      fontSize: "25px",
+                      border: "none",
+                    }}
+                  />
+                }
+              />
+              <Badge
+                count={product.Users.length}
+                
+                size="small"
+                style={{
+                  fontSize: 9,
+                  marginBottom: 30,
+                  marginLeft: -10,
+                }}
+              ></Badge>
             </Card>
           </div>
         );
       })}
     </div>
   );
-
-return(
-  <div className="cont">
-    <div className="search-div">
-        <input className="buscador" type='search' placeholder='Buscar' onChange={handleChange}>
-        </input>
-        <button id ="Button" className="search-btn " onClick={() => buscar(busqueda)}>Search</button>
-        <button id ="Button" className="reset-btn" onClick={() => showAll()}>Show All</button>
-
-        <div className="drop-btns">
-          <div class="dropdown">
-            <button  class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Clothing
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <p class="dropdown-item" onClick={() => filtro(1)}>T-Shirts</p>
-              <p class="dropdown-item" onClick={() => filtro(2)}>Trousers</p>
-              <p class="dropdown-item" onClick={() => filtro(3)}>Hoodies</p>
-              <p class="dropdown-item" onClick={() => filtro(4)}>Accesories</p>
-            </div>
-          </div>
-
-          <div class="dropdown">
-            <button  class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Sort by Price
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <p class="dropdown-item" onClick={() => orderAsc()}>Lowest to Hightest</p>
-              <p class="dropdown-item" onClick={() => orderDesc()}>Highest to Lowest</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <div className="order">
-        {product}
-
-
-      </div>
-  </div>
-  )
-
 };
 
 export default Products;
