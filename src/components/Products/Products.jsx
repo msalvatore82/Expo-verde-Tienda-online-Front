@@ -134,7 +134,7 @@ const Products = () => {
                 }}
               ></Badge>
               <div>
-                <input
+                <input className="input-reviews"
                   type="text"
                   name="content"
                   value={data.content}
@@ -142,7 +142,7 @@ const Products = () => {
                   onChange={handleInputChange}
                 />
                 <p>
-                  {" "}
+             
                   Deja un comentario:
                   <FormOutlined
                     onClick={() => {
