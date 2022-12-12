@@ -1,52 +1,78 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Card, Button, Badge } from "antd";
+import { Card, Button, Badge, Modal, Result } from "antd";
 import "./Products.scss";
-import { ShoppingCartOutlined, HeartOutlined } from "@ant-design/icons";
+import {
+  ShoppingCartOutlined,
+  HeartOutlined,
+  FormOutlined,
+} from "@ant-design/icons";
 import { ProductsContext } from "../../context/ProductContext/ProductState";
-
+import { placeholder } from "@babel/types";
+import { Navigate } from "react-router";
 
 const Products = () => {
-    const { products, getProducts, addCart, cart, createfav,getProductByName,getProductByCategory,orderProductAsc,orderProductDes } =
-    useContext(ProductsContext);
-    const [busqueda, setBusqueda] = useState('');
-    const handleChange = e => {
-      setBusqueda(e.target.value)
-     
-    }
-  
-    const buscar = (name) => {
-      getProductByName(name)
-      document.getElementsByClassName("buscador")[0].value = "";
-    }
-  
-    const showAll = () => {
-      getProducts()
-      document.getElementsByClassName("buscador")[0].value = "";
-    }
-  
-    const filtro = (num) => {
-      getProductByCategory(num)
-    }
-  
-    const orderAsc = () => {
-      orderProductAsc()
-    }
-  
-    const orderDesc = () => {
-      orderProductDes()
-    }
+  const [open, setOpen] = useState(false);
+  const [data, setData] = useState({ content: " " });
+  const initialState = { content: " " };
+  const handleInputChange = (e) => {
+    setData({
+      data,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const clearReviews = () => {
+    setData({ ...initialState });
+  };
 
-    
-    useEffect(() => {
+  const {
+    products,
+    getProducts,
+    addCart,
+    cart,
+    createfav,
+    createReview,
+    // getProductByName,
+    // getProductByCategory,
+    // orderProductAsc,
+    // orderProductDes,
+  } = useContext(ProductsContext);
+
+  // const [busqueda, setBusqueda] = useState("");
+  // const handleChange = (e) => {
+  //   setBusqueda(e.target.value);
+  // };
+
+  // const buscar = (name) => {
+  //   getProductByName(name);
+  //   document.getElementsByClassName("buscador")[0].value = "";
+  // };
+
+  // const showAll = () => {
+  //   getProducts();
+  //   document.getElementsByClassName("buscador")[0].value = "";
+  // };
+
+  // const filtro = (num) => {
+  //   getProductByCategory(num);
+  // };
+
+  // const orderAsc = () => {
+  //   orderProductAsc();
+  // };
+
+  // const orderDesc = () => {
+  //   orderProductDes();
+  // };
+
+  useEffect(() => {
     getProducts();
-    }, []);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
   return (
-    
     <div className="container-products">
       {products.map((product) => {
         console.log(product);
@@ -74,12 +100,20 @@ const Products = () => {
               <Button onClick={() => addCart(product)}>
                 Add Cart <ShoppingCartOutlined />
               </Button>
+              <div>
+                <FormOutlined
+                  onClick={() => setOpen(true)}
+                  style={{
+                    border: "none",
+                    marginLeft: 15,
+                    fontSize: 20,
+                  }}
+                />
+              </div>
               <Button
                 onClick={() => {
                   createfav(product.id);
-                 
                   getProducts();
-                  
                 }}
                 style={{
                   border: "none",
@@ -97,7 +131,6 @@ const Products = () => {
               />
               <Badge
                 count={product.Users.length}
-                
                 size="small"
                 style={{
                   fontSize: 9,
@@ -106,6 +139,55 @@ const Products = () => {
                 }}
               ></Badge>
             </Card>
+            <>
+              <Modal
+                title="Que opinas de este producto? "
+                centered
+                open={open}
+                onOk={() => {
+                  createReview(product.id);
+                  setOpen(false);
+                  clearReviews();
+                }}
+                onCancel={() => {
+                  setOpen(false);
+                  clearReviews();
+                }}
+                width={500}
+                onClick={() => {
+                  createReview(product);
+                }}
+              >
+                <form
+                  action=""
+                  style={{
+                    margin: "auto",
+                  }}
+                >
+                  <label>Ingresa tu review: </label>
+                  <input
+                    type="text"
+                    name="content"
+                    className="input-reviewa"
+                    value={data.content}
+                    placeholder="Escriba aqui su Review"
+                    onChange={handleInputChange}
+                  />
+                </form>
+                <Card
+                  title="hola"
+                  className="card-reviews"
+                >
+                  <p>hola</p>
+                </Card>
+                <Card
+                  title="hola"
+                  className="card-reviews"
+                >
+                  <p>hola</p>
+                </Card>
+              </Modal>
+            </>
           </div>
         );
       })}
@@ -114,3 +196,5 @@ const Products = () => {
 };
 
 export default Products;
+
+// ProductReviews
