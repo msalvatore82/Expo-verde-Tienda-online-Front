@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Card, Button, Badge, Modal, Result } from "antd";
+import { Card, Button, Badge, Modal } from "antd";
 import "./Products.scss";
 import {
   ShoppingCartOutlined,
@@ -7,16 +7,14 @@ import {
   FormOutlined,
 } from "@ant-design/icons";
 import { ProductsContext } from "../../context/ProductContext/ProductState";
-import { placeholder } from "@babel/types";
-import { Navigate } from "react-router";
 
 const Products = () => {
   const [open, setOpen] = useState(false);
-  const [data, setData] = useState({ content: " " });
-  const initialState = { content: " " };
+  const [data, setData] = useState({ content: "" });
+  const initialState = { content: "" };
   const handleInputChange = (e) => {
     setData({
-      data,
+      ...data,
       [e.target.name]: e.target.value,
     });
   };
@@ -30,39 +28,44 @@ const Products = () => {
     addCart,
     cart,
     createfav,
+    fav,
     createReview,
-    // getProductByName,
-    // getProductByCategory,
-    // orderProductAsc,
-    // orderProductDes,
+    getProductByName,
+    getProductByCategory,
+    orderProductAsc,
+    orderProductDes,
   } = useContext(ProductsContext);
 
-  // const [busqueda, setBusqueda] = useState("");
-  // const handleChange = (e) => {
-  //   setBusqueda(e.target.value);
-  // };
+  const [busqueda, setBusqueda] = useState("");
+  const handleChange = (e) => {
+    setBusqueda(e.target.value);
+  };
 
-  // const buscar = (name) => {
-  //   getProductByName(name);
-  //   document.getElementsByClassName("buscador")[0].value = "";
-  // };
+  function test(test) {
+    console.log(test);
+  }
 
-  // const showAll = () => {
-  //   getProducts();
-  //   document.getElementsByClassName("buscador")[0].value = "";
-  // };
+  const buscar = (name) => {
+    getProductByName(name);
+    document.getElementsByClassName("buscador")[0].value = "";
+  };
 
-  // const filtro = (num) => {
-  //   getProductByCategory(num);
-  // };
+  const showAll = () => {
+    getProducts();
+    document.getElementsByClassName("buscador")[0].value = "";
+  };
 
-  // const orderAsc = () => {
-  //   orderProductAsc();
-  // };
+  const filtro = (num) => {
+    getProductByCategory(num);
+  };
 
-  // const orderDesc = () => {
-  //   orderProductDes();
-  // };
+  const orderAsc = () => {
+    orderProductAsc();
+  };
+
+  const orderDesc = () => {
+    orderProductDes();
+  };
 
   useEffect(() => {
     getProducts();
@@ -72,10 +75,13 @@ const Products = () => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
+  useEffect(() => {
+    getProducts();
+  }, [fav]);
+
   return (
     <div className="container-products">
       {products.map((product) => {
-        console.log(product);
         return (
           <div key={product.id} className="site-card-border-less-wrapper">
             <Card
@@ -100,20 +106,9 @@ const Products = () => {
               <Button onClick={() => addCart(product)}>
                 Add Cart <ShoppingCartOutlined />
               </Button>
-              <div>
-                <FormOutlined
-                  onClick={() => setOpen(true)}
-                  style={{
-                    border: "none",
-                    marginLeft: 15,
-                    fontSize: 20,
-                  }}
-                />
-              </div>
               <Button
                 onClick={() => {
                   createfav(product.id);
-                  getProducts();
                 }}
                 style={{
                   border: "none",
@@ -138,6 +133,29 @@ const Products = () => {
                   marginLeft: -10,
                 }}
               ></Badge>
+              <div>
+                <input
+                  type="text"
+                  name="content"
+                  value={data.content}
+                  placeholder="Escriba aqui su Review"
+                  onChange={handleInputChange}
+                />
+                <p>
+                  {" "}
+                  Deja un comentario:
+                  <FormOutlined
+                    onClick={() => {
+                      setOpen(true);
+                    }}
+                    style={{
+                      color: "blue",
+                      fontSize: "25px",
+                      border: "none",
+                    }}
+                  />
+                </p>
+              </div>
             </Card>
             <>
               <Modal
@@ -145,7 +163,7 @@ const Products = () => {
                 centered
                 open={open}
                 onOk={() => {
-                  createReview(product.id);
+                  test(product.id);
                   setOpen(false);
                   clearReviews();
                 }}
@@ -174,16 +192,10 @@ const Products = () => {
                     onChange={handleInputChange}
                   />
                 </form>
-                <Card
-                  title="hola"
-                  className="card-reviews"
-                >
+                <Card title="hola" className="card-reviews">
                   <p>hola</p>
                 </Card>
-                <Card
-                  title="hola"
-                  className="card-reviews"
-                >
+                <Card title="hola" className="card-reviews">
                   <p>hola</p>
                 </Card>
               </Modal>
@@ -196,5 +208,3 @@ const Products = () => {
 };
 
 export default Products;
-
-// ProductReviews

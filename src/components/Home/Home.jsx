@@ -4,32 +4,25 @@ import "./Home.scss";
 import { Carousel } from "antd";
 import { Link } from "react-router-dom";
 
-
-
 const Home = () => {
   return (
     <div className="product-collection">
       <div className="container">
         <Carousel autoplay>
           <div>
-            {/* <h3 style={contentStyle}>1</h3> */}
-            <img src='/images/banner-navidad.jpg' alt="" />
+            <img src="/images/banner-navidad.jpg" alt="" />
           </div>
           <div>
-            {/* <h3 style={contentStyle}>2</h3> */}
-            <img src='/images/homenavi.png' alt="" />
+            <img src="/images/homenavi.png" alt="" />
           </div>
           <div>
-            {/* <h3 style={contentStyle}>3</h3> */}
-            <img src='/images/luces.jpg' alt="" />
+            <img src="/images/luces.jpg" alt="" />
           </div>
           <div>
-            {/* <h3 style={contentStyle}>4</h3> */}
-            <img src='/images/perro.jpg' alt="" />
+            <img src="/images/perro.jpg" alt="" />
           </div>
         </Carousel>
         <div className="product-collection-wrapper">
-          {/* <!-- product col left --> */}
           <div className="product-col-left flex">
             <div className="product-col-content">
               <h2 className="sm-title sm-title-home">
@@ -50,7 +43,6 @@ const Home = () => {
             </div>
           </div>
 
-          {/* <!-- product col right --> */}
           <div className="product-col-right">
             <div className="product-col-r-top flex">
               <div className="product-col-content">

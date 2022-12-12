@@ -21,18 +21,16 @@ const createUser = () => {
   };
   const onFinish = (values) => {
     register(values);
-    showModal()
+    showModal();
     setTimeout(() => {
       navigate("/");
-      //   clearMessage()
     }, 2000);
   };
-  
+
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-  
-  
+
   return (
     <div className="container-registration">
       <h1>Registro de Usuarios</h1>
@@ -96,11 +94,17 @@ const createUser = () => {
         >
           <Input.Password />
         </Form.Item>
-          {/* no se me carga el gender */}
+        {/* no se me carga el gender */}
         <Radio.Group name="gender">
-          <Radio.Button  name="Hombre" value="Hombre">Hombre</Radio.Button>
-          <Radio.Button name="Mujer" value="Mujer">Mujer</Radio.Button>
-          <Radio.Button name="NoBi" value="NoBi">No Binario</Radio.Button>
+          <Radio.Button name="Hombre" value="Hombre">
+            Hombre
+          </Radio.Button>
+          <Radio.Button name="Mujer" value="Mujer">
+            Mujer
+          </Radio.Button>
+          <Radio.Button name="NoBi" value="NoBi">
+            No Binario
+          </Radio.Button>
         </Radio.Group>
 
         <Form.Item>
@@ -126,12 +130,11 @@ const createUser = () => {
             onClick={createUser}
             style={{
               marginTop: 15,
-
             }}
           >
             Registarse
           </Button>
-                  </Form.Item>
+        </Form.Item>
       </Form>
       <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
         <Result

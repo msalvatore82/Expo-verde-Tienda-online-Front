@@ -13,21 +13,18 @@ const Login = () => {
   };
 
   useEffect(() => {
-      const foundToken = JSON.parse(localStorage.getItem("token"));
-      if (foundToken) {
-      navigate("/profile")
+    const foundToken = JSON.parse(localStorage.getItem("token"));
+    if (foundToken) {
+      navigate("/profile");
     }
-}, [login])
+  }, [login]);
   return (
     <div className="container-login">
       <h1>Login</h1>
       <Form
         name="basic"
-        labelCol={{
-             }}
-        wrapperCol={{
-        
-        }}
+        labelCol={{}}
+        wrapperCol={{}}
         initialValues={{
           remember: true,
         }}
@@ -61,11 +58,7 @@ const Login = () => {
           <Input.Password />
         </Form.Item>
 
-        <Form.Item
-          wrapperCol={{
-          
-          }}
-        >
+        <Form.Item wrapperCol={{}}>
           <Button type="primary" htmlType="submit">
             Submit
           </Button>

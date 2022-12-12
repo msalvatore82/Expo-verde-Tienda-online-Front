@@ -25,18 +25,29 @@ export const UserProvider = ({ children }) => {
       localStorage.setItem("token", JSON.stringify(res.data.token));
     }
   };
+
   const getUserInfo = async () => {
-    //me traigo el token del localstorage
     const token = JSON.parse(localStorage.getItem("token"));
-    //hago la petición
     const res = await axios.get(API_URL + "/users/getUserWithOrderById", {
       headers: {
         authorization: token,
       },
     });
-    //guardo el usuario que he recibido en el estado
     dispatch({
       type: "GET_USER_INFO",
+      payload: res.data,
+    });
+    return res;
+  };
+  const getUserFavs = async () => {
+    const token = JSON.parse(localStorage.getItem("token"));
+    const res = await axios.get(API_URL + "/users/getUserFav", {
+      headers: {
+        authorization: token,
+      },
+    });
+    dispatch({
+      type: "GET_USER_FAV",
       payload: res.data,
     });
     return res;
@@ -61,6 +72,7 @@ export const UserProvider = ({ children }) => {
     });
     if (res.data) {
       localStorage.removeItem("token");
+      localStorage.removeItem("cart");
     }
   };
   return (
@@ -74,6 +86,7 @@ export const UserProvider = ({ children }) => {
         getUserInfo,
         logout,
         register,
+        getUserFavs,
       }}
     >
       {children}

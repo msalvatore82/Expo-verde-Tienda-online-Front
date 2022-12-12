@@ -7,18 +7,23 @@ import { Button, Spin, Badge } from "antd";
 import { ShoppingCartOutlined, StarOutlined } from "@ant-design/icons";
 import { Collapse } from "antd";
 import "./Profile.css";
-import Products from "../Products/Products";
 const { Panel } = Collapse;
 
 const Profile = () => {
-  const { user, getUserInfo } = useContext(UserContext);
+  const { user, getUserInfo, getUserFavs } = useContext(UserContext);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     getUserInfo();
+    getUserFavs();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  // console.log(user.Orders[0].Products[0].Users); constador de fav en perfiles
+  // console.log(user.Orders[0].Products[0].Users);
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="card-profile flex-container">
@@ -36,9 +41,6 @@ const Profile = () => {
               {user.name} {user.surname}
             </h3>
             <h6>{user.email}</h6>
-            {/* <p>
-              User interface designer and <br /> front-end developer
-            </p> */}
             <div></div>
 
             <div class="buttons">
@@ -47,17 +49,15 @@ const Profile = () => {
                 style={{
                   margin: "10px",
                   border: "1px solid black",
-                 }}
+                }}
               >
-                
-                 Mis Pedidos
+                Mis Pedidos
                 <ShoppingCartOutlined
                   style={{
                     fontSize: 20,
-                  
                   }}
                 />
-                <Badge  count= {user.Orders.length} size="x-small"  ></Badge>
+                <Badge count={user.Orders.length} size="x-small"></Badge>
               </Button>
               <Button
                 style={{
@@ -112,10 +112,6 @@ const Profile = () => {
                             {product.name} <br />
                           </span>
                           <samp> € {product.price} </samp>
-
-                          {/* <p>
-                          
-                        </p> */}
                         </div>
                       </>
                     ))}

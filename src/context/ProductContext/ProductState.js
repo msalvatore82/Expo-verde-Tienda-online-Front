@@ -2,13 +2,11 @@ import { createContext, useReducer } from "react";
 import axios from "axios";
 import ProductsReducer from "./ProductReducer";
 
-
 const cart = JSON.parse(localStorage.getItem("cart"));
 const initialState = {
   products: [],
-  
   cart: cart ? cart : [],
-  fav:  [],
+  fav: [],
 };
 
 const API_URL = "http://localhost:8000";
@@ -31,9 +29,15 @@ export const ProductsProvider = ({ children }) => {
       payload: product,
     });
   };
+  // const setCart = (cart) => {
+  //   dispatch({
+  //     type: "SET_CART",
+  //     payload: cart,
+  //   });
+  // };
   const removeCart = (id) => {
-    const item = state.cart.map(object => object.id).indexOf(id);
-    console.log(id.id)
+    const item = state.cart.map((object) => object.id).indexOf(id);
+    console.log(id.id);
     const newCart = state.cart.splice(item, 1);
     dispatch({
       type: "REMOVE_CART",
@@ -46,7 +50,9 @@ export const ProductsProvider = ({ children }) => {
     });
   };
   const getProductsByName = async (entrada) => {
-    const res = await axios.get(API_URL + `/products/getOneProductByName/${entrada}`);
+    const res = await axios.get(
+      API_URL + `/products/getOneProductByName/${entrada}`
+    );
     dispatch({
       type: "GET_PRODUCTS_BY_NAME",
       payload: res.data,
@@ -55,7 +61,9 @@ export const ProductsProvider = ({ children }) => {
   };
 
   const getProductByCategory = async (param) => {
-    const res = await axios.get(API_URL + `/categories/getCategoryById/${param}`);
+    const res = await axios.get(
+      API_URL + `/categories/getCategoryById/${param}`
+    );
     dispatch({
       type: "GET_PRODUCT_BY_CATEGORY",
       payload: res.data,
@@ -63,7 +71,7 @@ export const ProductsProvider = ({ children }) => {
     return res;
   };
   const orderProductDes = async () => {
-    const res = await axios.get(API_URL + '/products/ProductsOrderDesc');
+    const res = await axios.get(API_URL + "/products/ProductsOrderDesc");
     dispatch({
       type: "ORDER_PRODUCTS_DES",
       payload: res.data,
@@ -71,7 +79,7 @@ export const ProductsProvider = ({ children }) => {
     return res;
   };
   const orderProductAsc = async () => {
-    const res = await axios.get(API_URL + '/products/getProductsOrderedASC');
+    const res = await axios.get(API_URL + "/products/getProductsOrderedASC");
     dispatch({
       type: "ORDER_PRODUCTS_ASC",
       payload: res.data,
@@ -79,12 +87,12 @@ export const ProductsProvider = ({ children }) => {
     return res;
   };
 
-  const createfav = async (ProductId ) => {
+  const createfav = async (ProductId) => {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
       const res = await axios.post(
         API_URL + "/products/fav",
-       {ProductId  },
+        { ProductId },
         {
           headers: {
             authorization: token,
@@ -98,35 +106,14 @@ export const ProductsProvider = ({ children }) => {
       });
     } catch (error) {
       console.error(error);
-    };
-  }
-    const createReview = async (ProductId, content ) => {
-      try {
-        const token = JSON.parse(localStorage.getItem("token"));
-        const res = await axios.post(
-          API_URL + "/products/review",
-         {ProductId, content },
-          {
-            headers: {
-              authorization: token,
-            },
-          }
-        );
-  
-        dispatch({
-          type: "Review",
-          payload: res.data,
-        });
-      } catch (error) {
-        console.error(error);
-      }
+    }
   };
-  const deleteReview = async (reviewsid) => {
+  const createReview = async (ProductId, content) => {
     try {
       const token = JSON.parse(localStorage.getItem("token"));
-      console.log(token);
-      await axios.delete( 
-        API_URL + "/products/deleteReview/",
+      const res = await axios.post(
+        API_URL + "/products/review",
+        { ProductId, content },
         {
           headers: {
             authorization: token,
@@ -134,9 +121,37 @@ export const ProductsProvider = ({ children }) => {
         }
       );
 
-    } 
-    
-    catch (error) {
+      dispatch({
+        type: "Review",
+        payload: res.data,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const getCart = () => {
+    const cart = JSON.parse(localStorage.getItem("cart"));
+    try {
+      localStorage.removeItem("cart");
+    } catch (error) {
+      console.error(error);
+    }
+    dispatch({
+      type: "GET-CART",
+      payload: cart,
+    });
+    console.log(cart);
+  };
+  const deleteReview = async (reviewsid) => {
+    try {
+      const token = JSON.parse(localStorage.getItem("token"));
+      console.log(token);
+      await axios.delete(API_URL + "/products/deleteReview/", {
+        headers: {
+          authorization: token,
+        },
+      });
+    } catch (error) {
       console.error(error);
     }
   };
@@ -157,7 +172,9 @@ export const ProductsProvider = ({ children }) => {
         orderProductAsc,
         removeCart,
         createReview,
-        deleteReview
+        deleteReview,
+        getCart,
+        // setCart
       }}
     >
       {children}

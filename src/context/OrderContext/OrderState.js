@@ -21,9 +21,6 @@ export const OrderProvider = ({ children }) => {
         },
       }
     );
-    // if (res) {
-    //   localStorage.removeItem("cart");
-    // }
     return res;
   };
 

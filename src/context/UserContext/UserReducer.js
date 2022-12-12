@@ -6,21 +6,26 @@ const users = (state, action) => {
 
         token: action.payload.token,
       };
-      case "GET_USER_INFO":
+    case "GET_USER_INFO":
       return {
         ...state,
         user: action.payload,
       };
-      case "LOGOUT":
+    case "GET_USER_FAV":
+      return {
+        ...state,
+        fav: action.payload,
+      };
+    case "LOGOUT":
       return {
         ...state,
         user: null,
-        token:null
+        token: null,
       };
-      case "ADD_USER":
+    case "ADD_USER":
       return {
         ...state,
-        message: action.payload.message
+        message: action.payload.message,
       };
 
     default:

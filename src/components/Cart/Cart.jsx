@@ -8,14 +8,18 @@ import { useState } from "react";
 import "./Cart.css";
 import gif from "../../assets/carrito-de-compra-2.gif";
 
+
 const Cart = () => {
-  const { cart, clearCart } = useContext(ProductsContext);
+  // const [cartAct, setcartAct] = useState(false)
+  const { cart, clearCart, setCart} = useContext(ProductsContext);
   const { createOrder } = useContext(OrderContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // const borrarProduct = () => {
-    // product.indexOf()
-  // };
+  const newCart = JSON.parse(localStorage.getItem('cart'))
+  const eraseProduct = (id) => {
+    const cart = JSON.parse(localStorage.getItem("cart"));
+    const newCart = cart.splice(1, id - 1);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+  };
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -27,6 +31,7 @@ const Cart = () => {
     setIsModalOpen(false);
   };
   const navigate = useNavigate();
+
   const createNewOrder = () => {
     createOrder(cart);
     showModal();
@@ -36,13 +41,23 @@ const Cart = () => {
     }, 4000);
   };
 
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+   }, [cart]);
+
+  //  useEffect(() => {
+  //   let cart = JSON.parse(localStorage.getItem("cart"));
+  //   setCart(cart)
+  //   console.log("test")
+  //  },[eraseProduct]);
+
+
+   useEffect(()=>{
+   },[cart])
   if (cart.length <= 0) {
     return (
       <div className="empty-cart">
-        {" "}
         <span className="message-cart">No tienes ningún producto añadido</span>
         <img className="imgcat" src={gif} alt="" />
       </div>
@@ -73,7 +88,6 @@ const Cart = () => {
           Este es su pedido:
         </Divider>
         {cart.map((cartItem) => {
-          console.log(cartItem);
           return (
             <div key={cartItem.id} className="site-card-border-less-wrapper">
               <Card
@@ -95,7 +109,14 @@ const Cart = () => {
                   }}
                 />
                 <p>{cartItem.price} €</p>
-                <Button type="primary" danger >
+
+                <Button
+                  type="primary"
+                  danger
+                  onClick={() => {
+                    eraseProduct(cartItem.id);
+                  }}
+                >
                   Eliminar
                 </Button>
               </Card>
