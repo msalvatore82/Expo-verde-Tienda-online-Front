@@ -7,6 +7,7 @@ import {
   FormOutlined,
 } from "@ant-design/icons";
 import { ProductsContext } from "../../context/ProductContext/ProductState";
+import { faMaximize } from "@fortawesome/free-solid-svg-icons";
 
 const Products = () => {
   const [open, setOpen] = useState(false);
@@ -134,17 +135,15 @@ const Products = () => {
                 }}
               ></Badge>
               <div>
-                <input className="input-reviews"
-                  type="text"
-                  name="content"
-                  value={data.content}
-                  placeholder="Escriba aqui su Review"
-                  onChange={handleInputChange}
-                />
-                <p>
+                
+                <p style={{
+                      
+                      
+                      marginTop: 10
+                    }}>
              
-                  Deja un comentario:
-                  <FormOutlined
+                  Deja un comentario: 
+                  < FormOutlined
                     onClick={() => {
                       setOpen(true);
                     }}
@@ -152,6 +151,8 @@ const Products = () => {
                       color: "blue",
                       fontSize: "25px",
                       border: "none",
+                      marginLeft: 10,
+                      paddingBottom: 5
                     }}
                   />
                 </p>
@@ -180,6 +181,8 @@ const Products = () => {
                   action=""
                   style={{
                     margin: "auto",
+                    marginBottom: 10,
+                    
                   }}
                 >
                   <label>Ingresa tu review: </label>

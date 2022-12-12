@@ -80,11 +80,11 @@ button.primary.ghost {
 .flex-container {
 	display: flex;
 	flex-direction: row;
-
 	flex-wrap: nowrap;
 	justify-content: center;
 	align-items: center;
 	align-content: center;
+	
   }
   
   .flex-items {
@@ -95,4 +95,7 @@ button.primary.ghost {
 	flex-basis: auto;
 	align-self: auto;
 	order: 0;
+	max-height: 400px;
+	flex-wrap: wrap;
+
   }

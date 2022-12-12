@@ -108,6 +108,7 @@ const Profile = () => {
                             textAlign: "center",
                           }}
                         >
+                          
                           <span>
                             {product.name} <br />
                           </span>
