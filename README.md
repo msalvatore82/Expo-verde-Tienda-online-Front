@@ -1,6 +1,6 @@
 #  React Ecommerce Tienda Expo Verde
 ![foto](./src/assets/gudoe-unatj.gif)
-## Índice
+## Index
 
 * About the project:
     * Installation and deployment

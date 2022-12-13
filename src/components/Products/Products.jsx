@@ -6,11 +6,6 @@ import {
   HeartOutlined,
   FormOutlined,
 } from "@ant-design/icons";
-import {
-  ShoppingCartOutlined,
-  HeartOutlined,
-  FormOutlined,
-} from "@ant-design/icons";
 import { ProductsContext } from "../../context/ProductContext/ProductState";
 import { faMaximize } from "@fortawesome/free-solid-svg-icons";
 
